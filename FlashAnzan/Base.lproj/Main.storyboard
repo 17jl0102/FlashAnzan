@@ -44,7 +44,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="homeView" destination="S8e-8C-O83" id="R8P-XU-Uin"/>
+                        <outlet property="homeView" destination="S8e-8C-O83" id="xd3-EV-CIp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
