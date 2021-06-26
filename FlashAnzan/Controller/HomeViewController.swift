@@ -7,8 +7,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class HomeViewController: UIViewController {
+    
+    @IBOutlet weak var homeView: HomeView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
