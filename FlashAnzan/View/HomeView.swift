@@ -39,16 +39,16 @@ class HomeView: UIView {
         }
     
     func createToolbar() {
-        let pickerToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
-        let pickerDoneButtonSystemItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(didTapDone))
-        pickerToolbar.setItems([pickerDoneButtonSystemItem], animated: true)
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
+        let doneButtonSystemItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(didTapDone))
+        toolbar.setItems([doneButtonSystemItem], animated: true)
         
-        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
-        let keyboardDoneButtonSystemItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: nil)
-        keyboardToolbar.setItems([keyboardDoneButtonSystemItem], animated: true)
-        numberOfQuestionsTextField.inputAccessoryView = keyboardToolbar
-        digitTextField.inputAccessoryView = pickerToolbar
-        displayIntervalTextField.inputAccessoryView = keyboardToolbar
+//        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
+//        let keyboardDoneButtonSystemItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: nil)
+//        keyboardToolbar.setItems([keyboardDoneButtonSystemItem], animated: true)
+        numberOfQuestionsTextField.inputAccessoryView = toolbar
+        digitTextField.inputAccessoryView = toolbar
+        displayIntervalTextField.inputAccessoryView = toolbar
     }
     
     func createDigitPicker(digits:[Int]) {
@@ -76,10 +76,6 @@ class HomeView: UIView {
         default:
             break
         }
-    }
-    func alert(alertTitle: String, alertMessage: String) {
-        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     }
     
     private func loadXib() {

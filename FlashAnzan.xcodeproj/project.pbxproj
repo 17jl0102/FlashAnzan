@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8004D0B1268816590092FB91 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8004D0B0268816590092FB91 /* QuestionViewController.swift */; };
 		802F7546267411EF003C35CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F7545267411EF003C35CA /* AppDelegate.swift */; };
 		802F7548267411EF003C35CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F7547267411EF003C35CA /* SceneDelegate.swift */; };
 		802F754A267411EF003C35CA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F7549267411EF003C35CA /* HomeViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8004D0B0268816590092FB91 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		802F7542267411EF003C35CA /* FlashAnzan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashAnzan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		802F7545267411EF003C35CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		802F7547267411EF003C35CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				802F7549267411EF003C35CA /* HomeViewController.swift */,
+				8004D0B0268816590092FB91 /* QuestionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				802F754A267411EF003C35CA /* HomeViewController.swift in Sources */,
+				8004D0B1268816590092FB91 /* QuestionViewController.swift in Sources */,
 				802F757B26762E8B003C35CA /* HomeView.swift in Sources */,
 				802F7546267411EF003C35CA /* AppDelegate.swift in Sources */,
 				802F7548267411EF003C35CA /* SceneDelegate.swift in Sources */,

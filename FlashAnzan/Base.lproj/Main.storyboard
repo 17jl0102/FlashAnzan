@@ -11,7 +11,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="FlashAnzan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="FlashAnzan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,6 +50,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="31.884057971014496" y="116.51785714285714"/>
+        </scene>
+        <!--Question View Controller-->
+        <scene sceneID="Ze4-Pj-uvJ">
+            <objects>
+                <viewController storyboardIdentifier="QuestionViewController" modalPresentationStyle="fullScreen" id="YeO-dd-mbI" customClass="QuestionViewController" customModule="FlashAnzan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hKv-Du-8EA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlH-Ov-WS2">
+                                <rect key="frame" x="167" y="383" width="80" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="35l-2C-Zzo"/>
+                                    <constraint firstAttribute="height" constant="130" id="qUm-jv-dRp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HL9-Gg-hdM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wlH-Ov-WS2" firstAttribute="centerY" secondItem="hKv-Du-8EA" secondAttribute="centerY" id="7FM-Pg-4os"/>
+                            <constraint firstItem="wlH-Ov-WS2" firstAttribute="centerX" secondItem="hKv-Du-8EA" secondAttribute="centerX" id="RAo-9G-hYe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GDL-Zp-HSL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cUz-T9-PvA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="770" y="117"/>
         </scene>
     </scenes>
     <resources>
