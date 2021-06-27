@@ -16,40 +16,70 @@ class HomeView: UIView {
     
     var digits:[Int] = ([Int])(1...5)
     let digitPicker = UIPickerView()
-    var saveValueDigit:Int = 0
+    var saveValues:Dictionary<String, Int> = [:]
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
         createDigitPicker(digits: digits)
+        createToolbar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadXib()
         createDigitPicker(digits: digits)
+        createToolbar()
     }
     
+    enum textFieldKey: String{
+        case numberOfQuestion = "numberOfQuestion"
+        case digit = "digit"
+        case displayInterval = "displayInterval"
+        }
+    
+    func createToolbar() {
+        let pickerToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
+        let pickerDoneButtonSystemItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(didTapDone))
+        pickerToolbar.setItems([pickerDoneButtonSystemItem], animated: true)
+        
+        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
+        let keyboardDoneButtonSystemItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: nil)
+        keyboardToolbar.setItems([keyboardDoneButtonSystemItem], animated: true)
+        numberOfQuestionsTextField.inputAccessoryView = keyboardToolbar
+        digitTextField.inputAccessoryView = pickerToolbar
+        displayIntervalTextField.inputAccessoryView = keyboardToolbar
+    }
     
     func createDigitPicker(digits:[Int]) {
-        //self.digits = digits
-        
         digitPicker.delegate = self
         digitPicker.dataSource = self
-        
-        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
-        let doneButtonSystemItem = UIBarButtonItem(title: "完了", style: .done, target: self, action: #selector(didTapDone))
-        toolbar.setItems([doneButtonSystemItem], animated: true)
-        
         digitTextField.inputView = digitPicker
-        digitTextField.inputAccessoryView = toolbar
     }
     
-    @objc func didTapDone() {
-        digitTextField.resignFirstResponder()
-        let index = digitPicker.selectedRow(inComponent: 0)
-        digitTextField.text = String(digits[index])
-        saveValueDigit = digits[index]
+    @objc func didTapDone(_ textField: UITextField) {
+        var textFieldValue = 0
+        switch textField.tag {
+        case 0:
+            textFieldValue = Int(numberOfQuestionsTextField.text!) ?? 0
+            numberOfQuestionsTextField.resignFirstResponder()
+            saveValues.updateValue(textFieldValue, forKey: textFieldKey.numberOfQuestion.rawValue)
+        case 1:
+            digitTextField.resignFirstResponder()
+            let index = digitPicker.selectedRow(inComponent: 0)
+            digitTextField.text = String(digits[index])
+            saveValues.updateValue(digits[index], forKey: textFieldKey.digit.rawValue)
+        case 2:
+            textFieldValue = Int(displayIntervalTextField.text!) ?? 0
+            displayIntervalTextField.resignFirstResponder()
+            saveValues.updateValue(textFieldValue, forKey: textFieldKey.displayInterval.rawValue)
+        default:
+            break
+        }
+    }
+    func alert(alertTitle: String, alertMessage: String) {
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     }
     
     private func loadXib() {
@@ -75,6 +105,6 @@ extension HomeView: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(digits[row])
+        return String(digits[row]) + "秒"
     }
 }
