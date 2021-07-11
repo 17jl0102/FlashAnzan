@@ -8,19 +8,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Flash Setting View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="FlashAnzan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="FlashSettingViewController" customModule="FlashAnzan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8e-8C-O83" customClass="HomeView" customModule="FlashAnzan" customModuleProvider="target">
-                                <rect key="frame" x="57" y="289" width="300" height="400"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8e-8C-O83" customClass="FlashSettingView" customModule="FlashAnzan" customModuleProvider="target">
+                                <rect key="frame" x="57" y="289" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="T9f-Gi-4NK"/>
-                                    <constraint firstAttribute="height" constant="400" id="rko-Mb-0eU"/>
+                                    <constraint firstAttribute="height" constant="300" id="rko-Mb-0eU"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="フラッシュ暗算" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gi-WV-0my">
@@ -32,19 +32,51 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0D-hP-mVb">
+                                <rect key="frame" x="57" y="609" width="180" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2Hi-E8-MJf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="開 始">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapTransitionQuestionView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qoz-dB-6UP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPf-1m-Tcm">
+                                <rect key="frame" x="267" y="609" width="90" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rDT-PE-MLB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <state key="normal" title="音 無">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="n0D-hP-mVb" firstAttribute="leading" secondItem="S8e-8C-O83" secondAttribute="leading" id="7LP-Jv-772"/>
                             <constraint firstItem="3gi-WV-0my" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="948-JO-EmC"/>
                             <constraint firstItem="S8e-8C-O83" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J6z-ge-CyL"/>
+                            <constraint firstItem="zPf-1m-Tcm" firstAttribute="width" secondItem="S8e-8C-O83" secondAttribute="width" multiplier="3:10" id="M3C-76-Boe"/>
                             <constraint firstItem="3gi-WV-0my" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bQZ-r9-R3n"/>
+                            <constraint firstItem="zPf-1m-Tcm" firstAttribute="top" secondItem="n0D-hP-mVb" secondAttribute="top" id="hxg-wk-e8H"/>
                             <constraint firstItem="S8e-8C-O83" firstAttribute="top" secondItem="3gi-WV-0my" secondAttribute="bottom" constant="30" id="os1-92-D30"/>
+                            <constraint firstItem="zPf-1m-Tcm" firstAttribute="trailing" secondItem="S8e-8C-O83" secondAttribute="trailing" id="qRk-TO-YSe"/>
                             <constraint firstItem="3gi-WV-0my" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="4:5" id="qXW-gx-aze"/>
+                            <constraint firstItem="zPf-1m-Tcm" firstAttribute="height" secondItem="n0D-hP-mVb" secondAttribute="height" id="r4P-KH-Kx5"/>
+                            <constraint firstItem="n0D-hP-mVb" firstAttribute="top" secondItem="S8e-8C-O83" secondAttribute="bottom" constant="20" id="v7X-cd-1w3"/>
+                            <constraint firstItem="n0D-hP-mVb" firstAttribute="width" secondItem="S8e-8C-O83" secondAttribute="width" multiplier="3:5" id="wlo-Pc-LUz"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="homeView" destination="S8e-8C-O83" id="xd3-EV-CIp"/>
+                        <outlet property="flashsettingView" destination="S8e-8C-O83" id="xd3-EV-CIp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -78,6 +110,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GDL-Zp-HSL"/>
+                    <connections>
+                        <outlet property="flashNumberLabel" destination="wlH-Ov-WS2" id="wVP-aa-lmU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUz-T9-PvA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

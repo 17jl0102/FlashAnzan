@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeView" customModule="FlashAnzan" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FlashSettingView" customModule="FlashAnzan" customModuleProvider="target">
             <connections>
                 <outlet property="digitTextField" destination="amv-Gx-yDQ" id="KWd-Ha-ha0"/>
-                <outlet property="displayIntervalTextField" destination="cGA-Er-qHC" id="QL7-Wb-XYM"/>
-                <outlet property="numberOfQuestionsTextField" destination="njN-L2-ACK" id="GaH-ID-lcf"/>
+                <outlet property="intervalTextField" destination="cGA-Er-qHC" id="QL7-Wb-XYM"/>
+                <outlet property="numberOfQuestionTextField" destination="njN-L2-ACK" id="GaH-ID-lcf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="360"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ra4-2Q-1Me">
@@ -82,7 +82,7 @@
                                 </label>
                                 <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cGA-Er-qHC">
                                     <rect key="frame" x="295.5" y="7.5" width="103.5" height="35"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="1"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                             </subviews>
@@ -109,40 +109,16 @@
                         <constraint firstItem="5m2-tk-RLH" firstAttribute="height" secondItem="FUQ-C0-jDO" secondAttribute="height" id="zWe-Ks-KTf"/>
                     </constraints>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfe-3s-2aQ">
-                    <rect key="frame" x="0.0" y="254" width="248.5" height="50"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                    <state key="normal" title="開始">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4Z-CF-T4l">
-                    <rect key="frame" x="258.5" y="254" width="155.5" height="50"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                    <state key="normal" title="音 有">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="gfe-3s-2aQ" firstAttribute="width" secondItem="FUQ-C0-jDO" secondAttribute="width" multiplier="3:5" id="10j-j4-gdt"/>
                 <constraint firstItem="ra4-2Q-1Me" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6QE-hI-u9M"/>
-                <constraint firstItem="Q4Z-CF-T4l" firstAttribute="trailing" secondItem="FUQ-C0-jDO" secondAttribute="trailing" id="Btt-OL-C4t"/>
-                <constraint firstItem="Q4Z-CF-T4l" firstAttribute="height" secondItem="FUQ-C0-jDO" secondAttribute="height" id="C8p-pO-UnY"/>
-                <constraint firstItem="Q4Z-CF-T4l" firstAttribute="top" secondItem="gfe-3s-2aQ" secondAttribute="top" id="HOP-Ea-ihn"/>
-                <constraint firstItem="gfe-3s-2aQ" firstAttribute="height" secondItem="FUQ-C0-jDO" secondAttribute="height" id="HX5-GM-VEo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ra4-2Q-1Me" secondAttribute="trailing" id="PTu-7D-ZOJ"/>
-                <constraint firstItem="gfe-3s-2aQ" firstAttribute="top" secondItem="ra4-2Q-1Me" secondAttribute="bottom" constant="20" id="Qr2-BY-vbD"/>
                 <constraint firstItem="ra4-2Q-1Me" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="RVj-tY-afe"/>
-                <constraint firstItem="gfe-3s-2aQ" firstAttribute="leading" secondItem="ra4-2Q-1Me" secondAttribute="leading" id="iUH-pt-tpk"/>
-                <constraint firstItem="Q4Z-CF-T4l" firstAttribute="leading" secondItem="gfe-3s-2aQ" secondAttribute="trailing" constant="10" id="u5o-99-dst"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="131.8840579710145" y="-47.544642857142854"/>
+            <point key="canvasLocation" x="131.8840579710145" y="-63.950892857142854"/>
         </view>
     </objects>
     <resources>

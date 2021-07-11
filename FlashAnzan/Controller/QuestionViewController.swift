@@ -9,21 +9,29 @@ import UIKit
 
 class QuestionViewController: UIViewController {
 
+    @IBOutlet weak var flashNumberLabel: UILabel!
+    var numberOfQuestion = 3
+    var digit = 0
+    var interval:Double = 1.0
+    var randomInt = Int.random(in: 1...5)
+    var questionList:[Int] = []
+    private var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuesitonDisplay), userInfo: nil, repeats: true)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func flashQuesitonDisplay() {
+        if numberOfQuestion == 0 {
+            timer?.invalidate()
+        } else {
+            let quesitonInt:Int = randomInt
+            flashNumberLabel.text = "\(quesitonInt)"
+            questionList.append(Int(flashNumberLabel.text ?? "") ?? 0)
+        }
+        numberOfQuestion -= 1
     }
-    */
 
 }
