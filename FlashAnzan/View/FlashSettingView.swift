@@ -8,7 +8,6 @@
 import UIKit
 
 protocol FlashValueSetDelegate {
-    //func FlashValuse(numberOfQuestion: Int, digit: Int, displayInterval: Int)
     func numberOfQuestionValueCheck(numberOfQuestion: Int)
     func digitValueCheck(digit: Int)
     func intervalValueCheck(interval: Double)
@@ -90,19 +89,20 @@ class FlashSettingView: UIView {
     
     @objc func didTapIntervalDone() {
         interval = Double(intervalTextField.text!) ?? 0
-        delegate?.intervalValueCheck(interval: interval!)
+        let millisecondInterval = (interval ?? 0)/1000
+        delegate?.intervalValueCheck(interval: millisecondInterval)
         intervalTextField.resignFirstResponder()
     }
     
     private func loadXib() {
-        let homeView = Bundle.main.loadNibNamed("HomeView", owner: self, options: nil)?.first as! UIView
-        homeView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(homeView)
+        let flashSettingView = Bundle.main.loadNibNamed("FlashSettingView", owner: self, options: nil)?.first as! UIView
+        flashSettingView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(flashSettingView)
 
-        homeView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        homeView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        homeView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        homeView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        flashSettingView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        flashSettingView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        flashSettingView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        flashSettingView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
     
 }

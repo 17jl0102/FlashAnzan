@@ -7,13 +7,13 @@
 
 import UIKit
 
-class QuestionViewController: UIViewController {
 
+class QuestionViewController: UIViewController, UIApplicationDelegate {
+    
     @IBOutlet weak var flashNumberLabel: UILabel!
-    var numberOfQuestion = 3
+    var numberOfQuestion = 0
     var digit = 0
-    var interval:Double = 1.0
-    var randomInt = Int.random(in: 1...5)
+    var interval:Double = 0
     var questionList:[Int] = []
     private var timer: Timer?
     
@@ -26,12 +26,21 @@ class QuestionViewController: UIViewController {
     @objc func flashQuesitonDisplay() {
         if numberOfQuestion == 0 {
             timer?.invalidate()
+            let anserInputViewController = storyboard?.instantiateViewController(withIdentifier: "AnserInputViewController") as! AnserInputViewController
+            present(anserInputViewController, animated: true, completion: nil)
         } else {
-            let quesitonInt:Int = randomInt
-            flashNumberLabel.text = "\(quesitonInt)"
+            flashNumberLabel.text = digitNumberGenerator(digit: digit)
             questionList.append(Int(flashNumberLabel.text ?? "") ?? 0)
         }
         numberOfQuestion -= 1
     }
 
+    func digitNumberGenerator(digit: Int) -> String {
+        var questionNum = ""
+        for _ in 1...digit {
+            let randomInt = Int.random(in: 0...9)
+            questionNum += String(randomInt)
+        }
+        return questionNum
+    }
 }

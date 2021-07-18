@@ -16,8 +16,11 @@
 		802F7552267411F3003C35CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802F7550267411F3003C35CA /* LaunchScreen.storyboard */; };
 		802F755D267411F5003C35CA /* FlashAnzanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F755C267411F5003C35CA /* FlashAnzanTests.swift */; };
 		802F7568267411F5003C35CA /* FlashAnzanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F7567267411F5003C35CA /* FlashAnzanUITests.swift */; };
-		802F75792675A1CA003C35CA /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 802F75782675A1CA003C35CA /* HomeView.xib */; };
+		802F75792675A1CA003C35CA /* FlashSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 802F75782675A1CA003C35CA /* FlashSettingView.xib */; };
 		802F757B26762E8B003C35CA /* FlashSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F757A26762E8B003C35CA /* FlashSettingView.swift */; };
+		80E98ECE26A3A80200C99A54 /* AnserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */; };
+		80E98ED126A3AC2C00C99A54 /* AnserInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80E98ED026A3AC2C00C99A54 /* AnserInputView.xib */; };
+		80E98ED326A3AC4F00C99A54 /* AnserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E98ED226A3AC4F00C99A54 /* AnserInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +56,11 @@
 		802F7563267411F5003C35CA /* FlashAnzanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashAnzanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		802F7567267411F5003C35CA /* FlashAnzanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashAnzanUITests.swift; sourceTree = "<group>"; };
 		802F7569267411F5003C35CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		802F75782675A1CA003C35CA /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
+		802F75782675A1CA003C35CA /* FlashSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashSettingView.xib; sourceTree = "<group>"; };
 		802F757A26762E8B003C35CA /* FlashSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashSettingView.swift; sourceTree = "<group>"; };
+		80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnserInputViewController.swift; sourceTree = "<group>"; };
+		80E98ED026A3AC2C00C99A54 /* AnserInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnserInputView.xib; sourceTree = "<group>"; };
+		80E98ED226A3AC4F00C99A54 /* AnserInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnserInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +113,8 @@
 			children = (
 				802F75762675A0D6003C35CA /* View */,
 				802F75772675A0F1003C35CA /* Controller */,
-				802F7545267411EF003C35CA /* AppDelegate.swift */,
 				802F7547267411EF003C35CA /* SceneDelegate.swift */,
+				802F7545267411EF003C35CA /* AppDelegate.swift */,
 				802F754B267411EF003C35CA /* Main.storyboard */,
 				802F754E267411F3003C35CA /* Assets.xcassets */,
 				802F7550267411F3003C35CA /* LaunchScreen.storyboard */,
@@ -139,7 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				802F757A26762E8B003C35CA /* FlashSettingView.swift */,
-				802F75782675A1CA003C35CA /* HomeView.xib */,
+				802F75782675A1CA003C35CA /* FlashSettingView.xib */,
+				80E98ED226A3AC4F00C99A54 /* AnserInputView.swift */,
+				80E98ED026A3AC2C00C99A54 /* AnserInputView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +157,7 @@
 			children = (
 				802F7549267411EF003C35CA /* FlashSettingViewController.swift */,
 				8004D0B0268816590092FB91 /* QuestionViewController.swift */,
+				80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,7 +266,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				802F7552267411F3003C35CA /* LaunchScreen.storyboard in Resources */,
-				802F75792675A1CA003C35CA /* HomeView.xib in Resources */,
+				802F75792675A1CA003C35CA /* FlashSettingView.xib in Resources */,
+				80E98ED126A3AC2C00C99A54 /* AnserInputView.xib in Resources */,
 				802F754F267411F3003C35CA /* Assets.xcassets in Resources */,
 				802F754D267411EF003C35CA /* Main.storyboard in Resources */,
 			);
@@ -285,6 +295,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				802F754A267411EF003C35CA /* FlashSettingViewController.swift in Sources */,
+				80E98ED326A3AC4F00C99A54 /* AnserInputView.swift in Sources */,
+				80E98ECE26A3A80200C99A54 /* AnserInputViewController.swift in Sources */,
 				8004D0B1268816590092FB91 /* QuestionViewController.swift in Sources */,
 				802F757B26762E8B003C35CA /* FlashSettingView.swift in Sources */,
 				802F7546267411EF003C35CA /* AppDelegate.swift in Sources */,
