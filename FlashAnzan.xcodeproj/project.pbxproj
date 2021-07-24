@@ -18,6 +18,7 @@
 		802F7568267411F5003C35CA /* FlashAnzanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F7567267411F5003C35CA /* FlashAnzanUITests.swift */; };
 		802F75792675A1CA003C35CA /* FlashSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 802F75782675A1CA003C35CA /* FlashSettingView.xib */; };
 		802F757B26762E8B003C35CA /* FlashSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802F757A26762E8B003C35CA /* FlashSettingView.swift */; };
+		80785AB426A3F139008895DA /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80785AB326A3F139008895DA /* ResultViewController.swift */; };
 		80E98ECE26A3A80200C99A54 /* AnserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */; };
 		80E98ED126A3AC2C00C99A54 /* AnserInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80E98ED026A3AC2C00C99A54 /* AnserInputView.xib */; };
 		80E98ED326A3AC4F00C99A54 /* AnserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E98ED226A3AC4F00C99A54 /* AnserInputView.swift */; };
@@ -58,6 +59,7 @@
 		802F7569267411F5003C35CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802F75782675A1CA003C35CA /* FlashSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlashSettingView.xib; sourceTree = "<group>"; };
 		802F757A26762E8B003C35CA /* FlashSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashSettingView.swift; sourceTree = "<group>"; };
+		80785AB326A3F139008895DA /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnserInputViewController.swift; sourceTree = "<group>"; };
 		80E98ED026A3AC2C00C99A54 /* AnserInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnserInputView.xib; sourceTree = "<group>"; };
 		80E98ED226A3AC4F00C99A54 /* AnserInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnserInputView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				802F7549267411EF003C35CA /* FlashSettingViewController.swift */,
 				8004D0B0268816590092FB91 /* QuestionViewController.swift */,
 				80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */,
+				80785AB326A3F139008895DA /* ResultViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				802F754A267411EF003C35CA /* FlashSettingViewController.swift in Sources */,
 				80E98ED326A3AC4F00C99A54 /* AnserInputView.swift in Sources */,
 				80E98ECE26A3A80200C99A54 /* AnserInputViewController.swift in Sources */,
+				80785AB426A3F139008895DA /* ResultViewController.swift in Sources */,
 				8004D0B1268816590092FB91 /* QuestionViewController.swift in Sources */,
 				802F757B26762E8B003C35CA /* FlashSettingView.swift in Sources */,
 				802F7546267411EF003C35CA /* AppDelegate.swift in Sources */,

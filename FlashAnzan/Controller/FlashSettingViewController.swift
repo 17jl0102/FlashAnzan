@@ -42,26 +42,22 @@ class FlashSettingViewController: UIViewController {
 extension FlashSettingViewController: FlashValueSetDelegate {
     
     func numberOfQuestionValueCheck(numberOfQuestion: Int) {
-        if numberOfQuestion > 0 {
+        if numberOfQuestion > 1 && numberOfQuestion <= 100 {
             setNumberOfQuestion = numberOfQuestion
         } else {
-            alert(alertTitle: "エラー", alertMessage: "出題数を設定してください")
+            alert(alertTitle: "エラー", alertMessage: "2~100問内で設定してください")
         }
     }
     
     func digitValueCheck(digit: Int) {
-        if digit > 0 {
             setDigit = digit
-        } else {
-            alert(alertTitle: "エラー", alertMessage: "桁数を設定してください")
-        }
     }
     
     func intervalValueCheck(interval: Double) {
-        if interval > 0 {
+        if interval >= 0.1 && interval <= 3 {
             setInterval = interval
         } else {
-            alert(alertTitle: "エラー", alertMessage: "表示間隔を設定してください")
+            alert(alertTitle: "エラー", alertMessage: "0001~3000ミリ秒内で設定してください")
         }
     }
 }
