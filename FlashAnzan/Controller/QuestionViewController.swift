@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import AudioToolbox
 
 class QuestionViewController: UIViewController, UIApplicationDelegate {
     
@@ -16,19 +16,21 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
     var interval:Double = 0
     var questionList:[Int] = []
     private var timer: Timer?
+    var quesiton = 0
+    var soundStatus = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuesitonDisplay), userInfo: nil, repeats: true)
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        flashNumberLabel.text = ""
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuesitonDisplay), userInfo: nil, repeats: true)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
+        quesiton = numberOfQuestion
     }
     
     @objc func playAgain() {
@@ -36,16 +38,21 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
     }
 
     @objc func flashQuesitonDisplay() {
-        if numberOfQuestion == 0 {
+        if quesiton == 0 {
             timer?.invalidate()
             let anserInputViewController = storyboard?.instantiateViewController(withIdentifier: "AnserInputViewController") as! AnserInputViewController
             anserInputViewController.quesitonList = questionList
             present(anserInputViewController, animated: true, completion: nil)
+            questionList = []
+            soundStatus = 0
         } else {
             flashNumberLabel.text = digitNumberGenerator(digit: digit)
+            if soundStatus == 1 {
+                AudioServicesPlaySystemSound(1052)
+            }
             questionList.append(Int(flashNumberLabel.text ?? "") ?? 0)
         }
-        numberOfQuestion -= 1
+        quesiton -= 1
     }
 
     func digitNumberGenerator(digit: Int) -> String {

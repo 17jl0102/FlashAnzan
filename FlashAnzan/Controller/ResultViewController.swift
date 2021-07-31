@@ -18,7 +18,6 @@ class ResultViewController: UIViewController {
     var anserValue = 0
     var questionList:[Int] = []
     var quesitonResultInt = 0
-    let quesiton = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +33,12 @@ class ResultViewController: UIViewController {
         for quesiton in questionList {
             questionLabel.text! += "\(quesiton)\n"
         }
-        questionLabel.numberOfLines = 0
-        questionLabel.sizeToFit()
-        
     }
     
     @IBAction func DidTapPlayAgainButton(_ sender: UIButton) {
+        anserValue = 0
+        questionList = []
+        quesitonResultInt = 0
         NotificationCenter.default.post(name: Notification.Name("playAgain"), object: nil)
     }
     

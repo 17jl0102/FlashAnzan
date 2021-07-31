@@ -53,9 +53,12 @@
                                     <constraint firstAttribute="height" constant="50" id="rDT-PE-MLB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <state key="normal" title="音 無">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="didTapSoundControl:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZT2-e7-tuV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -77,6 +80,7 @@
                     </view>
                     <connections>
                         <outlet property="flashsettingView" destination="S8e-8C-O83" id="xd3-EV-CIp"/>
+                        <outlet property="soundControlButoon" destination="zPf-1m-Tcm" id="8u6-xX-MYn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -303,7 +307,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="250"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFe-6L-hjC">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="2500"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="問題" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aC-H4-Rll">
                                                         <rect key="frame" x="154.5" y="0.0" width="45" height="25"/>
@@ -315,8 +319,8 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1O-3p-729">
-                                                        <rect key="frame" x="0.0" y="30" width="354" height="2470"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s1O-3p-729">
+                                                        <rect key="frame" x="0.0" y="30" width="354" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -328,7 +332,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="s1O-3p-729" secondAttribute="trailing" id="CFe-ac-44f"/>
                                                     <constraint firstItem="1aC-H4-Rll" firstAttribute="top" secondItem="CFe-6L-hjC" secondAttribute="top" id="bJ9-il-sUe"/>
                                                     <constraint firstItem="s1O-3p-729" firstAttribute="top" secondItem="1aC-H4-Rll" secondAttribute="bottom" constant="5" id="lww-yP-QIo"/>
-                                                    <constraint firstAttribute="height" constant="2500" id="m2L-kd-mfd"/>
                                                     <constraint firstItem="s1O-3p-729" firstAttribute="leading" secondItem="CFe-6L-hjC" secondAttribute="leading" id="mFe-aN-2QY"/>
                                                     <constraint firstAttribute="bottom" secondItem="s1O-3p-729" secondAttribute="bottom" id="yku-ZA-CEf"/>
                                                 </constraints>

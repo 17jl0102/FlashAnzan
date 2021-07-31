@@ -48,6 +48,8 @@ class AnserInputViewController: UIViewController {
             resultViewController.questionList = quesitonList
             resultViewController.quesitonResultInt = quesitonList.reduce(0){$0 + $1}
             present(resultViewController, animated: true, completion: nil)
+            anserValue = 0
+            quesitonList = []
         }
     }
     

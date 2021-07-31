@@ -10,15 +10,17 @@ import UIKit
 class FlashSettingViewController: UIViewController {
     
     @IBOutlet weak var flashsettingView: FlashSettingView!
+    @IBOutlet weak var soundControlButoon: UIButton!
     
     var setNumberOfQuestion = 0
     var setDigit = 0
     var setInterval:Double = 0
+    var soundStatus = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         flashsettingView.delegate = self
-        
+        soundControlButoon.setTitle("音 有", for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(backFlashSettingViewController), name: Notification.Name("backFlashSettingViewController"), object: nil)
     }
     
@@ -38,11 +40,25 @@ class FlashSettingViewController: UIViewController {
             questionViewController.numberOfQuestion = setNumberOfQuestion
             questionViewController.digit = setDigit
             questionViewController.interval = setInterval
+            questionViewController.soundStatus = soundStatus
             present(questionViewController, animated: true, completion: nil)
+            soundStatus = 0
         } else {
             alert(alertTitle: "未設定項目があります", alertMessage: "全ての値を設定してください")
         }
     }
+    
+    @IBAction func didTapSoundControl(_ sender: UIButton) {
+        if soundStatus == 0 {
+            soundStatus = 1
+            soundControlButoon.setTitle("音 無", for: .normal)
+        } else {
+            soundStatus = 0
+            soundControlButoon.setTitle("音 有", for: .normal)
+        }
+    }
+    
+    
 }
 
 extension FlashSettingViewController: FlashValueSetDelegate {
