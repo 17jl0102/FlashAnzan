@@ -20,11 +20,19 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuesitonDisplay), userInfo: nil, repeats: true)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuesitonDisplay), userInfo: nil, repeats: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
+    }
+    
+    @objc func playAgain() {
+        dismiss(animated: true, completion: nil)
     }
 
     @objc func flashQuesitonDisplay() {

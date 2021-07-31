@@ -13,10 +13,12 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var anserJudgeLabel: UILabel!
     @IBOutlet weak var quesitonResultLabel: UILabel!
     @IBOutlet weak var anserLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     var anserValue = 0
     var questionList:[Int] = []
     var quesitonResultInt = 0
+    let quesiton = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +30,21 @@ class ResultViewController: UIViewController {
         } else {
             anserJudgeLabel.text = "不正解です"
         }
+        
+        for quesiton in questionList {
+            questionLabel.text! += "\(quesiton)\n"
+        }
+        questionLabel.numberOfLines = 0
+        questionLabel.sizeToFit()
+        
     }
     
     @IBAction func DidTapPlayAgainButton(_ sender: UIButton) {
-        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: Notification.Name("playAgain"), object: nil)
     }
     
-    @IBAction func DidTapBackFlashSettingViewButton(_ sender: UIButton) {
-        presentingViewController?.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-//        let flashSettingViewController = storyboard?.instantiateViewController(withIdentifier: "FlashSettingViewController") as! FlashSettingViewController
-//        present(flashSettingViewController, animated: true, completion: nil)
+    @IBAction func DidTapBackFlashSettingViewControllerButton(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("backFlashSettingViewController"), object: nil)
     }
     
 }

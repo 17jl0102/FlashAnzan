@@ -18,8 +18,20 @@ class FlashSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         flashsettingView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(backFlashSettingViewController), name: Notification.Name("backFlashSettingViewController"), object: nil)
     }
-
+    
+    @objc func backFlashSettingViewController() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func alert(alertTitle: String, alertMessage: String) {
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true)
+    }
+    
     @IBAction func didTapTransitionQuestionView(_ sender: UIButton) {
         let questionViewController = storyboard?.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
         if setNumberOfQuestion > 0, setDigit > 0 , setInterval > 0 {
@@ -30,12 +42,6 @@ class FlashSettingViewController: UIViewController {
         } else {
             alert(alertTitle: "未設定項目があります", alertMessage: "全ての値を設定してください")
         }
-    }
-    
-    func alert(alertTitle: String, alertMessage: String) {
-        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        present(alertController, animated: true)
     }
 }
 
