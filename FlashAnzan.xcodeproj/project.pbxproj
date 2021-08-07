@@ -117,7 +117,6 @@
 				802F75772675A0F1003C35CA /* Controller */,
 				802F7547267411EF003C35CA /* SceneDelegate.swift */,
 				802F7545267411EF003C35CA /* AppDelegate.swift */,
-				802F754B267411EF003C35CA /* Main.storyboard */,
 				802F754E267411F3003C35CA /* Assets.xcassets */,
 				802F7550267411F3003C35CA /* LaunchScreen.storyboard */,
 				802F7553267411F3003C35CA /* Info.plist */,
@@ -158,9 +157,10 @@
 			isa = PBXGroup;
 			children = (
 				802F7549267411EF003C35CA /* FlashSettingViewController.swift */,
-				8004D0B0268816590092FB91 /* QuestionViewController.swift */,
 				80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */,
+				8004D0B0268816590092FB91 /* QuestionViewController.swift */,
 				80785AB326A3F139008895DA /* ResultViewController.swift */,
+				802F754B267411EF003C35CA /* Main.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

@@ -8,9 +8,9 @@
 import UIKit
 
 protocol FlashValueSetDelegate {
-    func numberOfQuestionValueCheck(numberOfQuestion: Int)
+//    func numberOfQuestionValueCheck(numberOfQuestion: Int)
     func digitValueCheck(digit: Int)
-    func intervalValueCheck(interval: Double)
+//    func intervalValueCheck(interval: Double)
 }
 
 @IBDesignable
@@ -26,7 +26,6 @@ class FlashSettingView: UIView {
     var digit: Int?
     var interval: Double?
     var delegate: FlashValueSetDelegate?
-    
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +44,7 @@ class FlashSettingView: UIView {
         createDigitToolbar()
         createIntervalToolbar()
     }
+    
     
     func createNumberOfQuestionToolbar() {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
@@ -74,8 +74,8 @@ class FlashSettingView: UIView {
     }
     
     @objc func didTapNumberOfQuestionDone() {
-        numberOfQuestion = Int(numberOfQuestionTextField.text!) ?? 0
-        delegate?.numberOfQuestionValueCheck(numberOfQuestion: numberOfQuestion!)
+//        numberOfQuestion = Int(numberOfQuestionTextField.text!) ?? 0
+//        delegate?.numberOfQuestionValueCheck(numberOfQuestion: numberOfQuestion!)
         numberOfQuestionTextField.resignFirstResponder()
     }
     
@@ -88,9 +88,9 @@ class FlashSettingView: UIView {
     }
     
     @objc func didTapIntervalDone() {
-        interval = Double(intervalTextField.text!) ?? 0
-        let millisecondInterval = (interval ?? 0)/1000
-        delegate?.intervalValueCheck(interval: millisecondInterval)
+//        interval = Double(intervalTextField.text!) ?? 0
+//        let millisecondInterval = (interval ?? 0)/1000
+//        delegate?.intervalValueCheck(interval: millisecondInterval)
         intervalTextField.resignFirstResponder()
     }
     

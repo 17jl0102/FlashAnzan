@@ -22,10 +22,37 @@ class FlashSettingViewController: UIViewController {
         flashsettingView.delegate = self
         soundControlButoon.setTitle("音 有", for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(backFlashSettingViewController), name: Notification.Name("backFlashSettingViewController"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextfieldDidChange(numberOfQuestionNotification:)), name: UITextField.textDidChangeNotification, object: flashsettingView.numberOfQuestionTextField)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(intervalTextfieldDidChange(intervalNotification:)), name: UITextField.textDidChangeNotification, object: flashsettingView.intervalTextField)
     }
     
     @objc func backFlashSettingViewController() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func numberOfQuestionTextfieldDidChange(numberOfQuestionNotification: Notification) {
+        let numberOfQuestionTextField = numberOfQuestionNotification.object as! UITextField
+        if let numberOfQuestion = numberOfQuestionTextField.text {
+            if Int(numberOfQuestion) ?? 0 > 1 && Int(numberOfQuestion) ?? 0 <= 100 {
+                setNumberOfQuestion = Int(numberOfQuestion) ?? 0
+            } else {
+                alert(alertTitle: "エラー", alertMessage: "2~100問内で設定してください")
+            }
+        }
+    }
+    
+    @objc func intervalTextfieldDidChange(intervalNotification: Notification) {
+        let intervalTextField = intervalNotification.object as! UITextField
+        if let interval = intervalTextField.text {
+            if Int(interval) ?? 0 >= 100 && Int(interval) ?? 0 <= 3000 {
+                
+                setInterval = Double(interval) ?? 0/1000
+            } else {
+                alert(alertTitle: "エラー", alertMessage: "100~3000ミリ秒内で設定してください")
+            }
+        }
     }
     
     func alert(alertTitle: String, alertMessage: String) {
@@ -57,29 +84,27 @@ class FlashSettingViewController: UIViewController {
             soundControlButoon.setTitle("音 有", for: .normal)
         }
     }
-    
-    
 }
 
 extension FlashSettingViewController: FlashValueSetDelegate {
     
-    func numberOfQuestionValueCheck(numberOfQuestion: Int) {
-        if numberOfQuestion > 1 && numberOfQuestion <= 100 {
-            setNumberOfQuestion = numberOfQuestion
-        } else {
-            alert(alertTitle: "エラー", alertMessage: "2~100問内で設定してください")
-        }
-    }
+//    func numberOfQuestionValueCheck(numberOfQuestion: Int) {
+//        if numberOfQuestion > 1 && numberOfQuestion <= 100 {
+//            setNumberOfQuestion = numberOfQuestion
+//        } else {
+//            alert(alertTitle: "エラー", alertMessage: "2~100問内で設定してください")
+//        }
+//    }
     
     func digitValueCheck(digit: Int) {
             setDigit = digit
     }
     
-    func intervalValueCheck(interval: Double) {
-        if interval >= 0.1 && interval <= 3 {
-            setInterval = interval
-        } else {
-            alert(alertTitle: "エラー", alertMessage: "0001~3000ミリ秒内で設定してください")
-        }
-    }
+//    func intervalValueCheck(interval: Double) {
+//        if interval >= 0.1 && interval <= 3 {
+//            setInterval = interval
+//        } else {
+//            alert(alertTitle: "エラー", alertMessage: "100~3000ミリ秒内で設定してください")
+//        }
+//    }
 }
