@@ -21,15 +21,15 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuesitonDisplay), userInfo: nil, repeats: true)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         flashNumberLabel.text = ""
-        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuesitonDisplay), userInfo: nil, repeats: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.timer = Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(self.flashQuesitonDisplay), userInfo: nil, repeats: true)
+        }
         quesiton = numberOfQuestion
     }
     

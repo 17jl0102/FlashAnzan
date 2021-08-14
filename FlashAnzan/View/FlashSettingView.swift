@@ -8,10 +8,13 @@
 import UIKit
 
 protocol FlashValueSetDelegate {
-//    func numberOfQuestionValueCheck(numberOfQuestion: Int)
-    func digitValueCheck(digit: Int)
-//    func intervalValueCheck(interval: Double)
-}
+    func numberOfQuestionValueDelivery(numberOfQuestion: Int)
+    func digitValueDelivery(digit: Int)
+    func intervalValueDelivery(interval: Double)
+    func numberOfQuestionCheckAlert()
+    func digitCheckAlert()
+    func intervalCheckAlert()
+    }
 
 @IBDesignable
 class FlashSettingView: UIView {
@@ -34,6 +37,9 @@ class FlashSettingView: UIView {
         createNumberOfQuestionToolbar()
         createDigitToolbar()
         createIntervalToolbar()
+        NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)), name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)), name: UITextField.textDidChangeNotification, object: intervalTextField)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +49,9 @@ class FlashSettingView: UIView {
         createNumberOfQuestionToolbar()
         createDigitToolbar()
         createIntervalToolbar()
+        NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)), name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)), name: UITextField.textDidChangeNotification, object: intervalTextField)
     }
     
     
@@ -74,8 +83,7 @@ class FlashSettingView: UIView {
     }
     
     @objc func didTapNumberOfQuestionDone() {
-//        numberOfQuestion = Int(numberOfQuestionTextField.text!) ?? 0
-//        delegate?.numberOfQuestionValueCheck(numberOfQuestion: numberOfQuestion!)
+        delegate?.numberOfQuestionCheckAlert()
         numberOfQuestionTextField.resignFirstResponder()
     }
     
@@ -83,15 +91,27 @@ class FlashSettingView: UIView {
         let index = digitPicker.selectedRow(inComponent: 0)
         digitTextField.text = String(digits[index])
         digit = digits[index]
-        delegate?.digitValueCheck(digit: digit!)
+        delegate?.digitValueDelivery(digit: digit!)
         digitTextField.resignFirstResponder()
     }
     
     @objc func didTapIntervalDone() {
-//        interval = Double(intervalTextField.text!) ?? 0
-//        let millisecondInterval = (interval ?? 0)/1000
-//        delegate?.intervalValueCheck(interval: millisecondInterval)
+        delegate?.intervalCheckAlert()
         intervalTextField.resignFirstResponder()
+    }
+    
+    @objc func numberOfQuestionTextFieldChange(numberOfQuestionNotification: Notification) {
+        let numberOfQuestionTextField = numberOfQuestionNotification.object as! UITextField
+        if let numberOfQuestion = numberOfQuestionTextField.text {
+            delegate?.numberOfQuestionValueDelivery(numberOfQuestion: Int(numberOfQuestion) ?? 0)
+        }
+    }
+    
+    @objc func intervalTextFieldChange(intervalNotification: Notification) {
+        let intervalTextField = intervalNotification.object as! UITextField
+        if let interval = intervalTextField.text {
+            delegate?.intervalValueDelivery(interval: Double(interval) ?? 0)
+        }
     }
     
     private func loadXib() {
@@ -104,7 +124,6 @@ class FlashSettingView: UIView {
         flashSettingView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         flashSettingView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
-    
 }
 
 extension FlashSettingView: UIPickerViewDelegate, UIPickerViewDataSource {

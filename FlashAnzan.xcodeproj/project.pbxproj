@@ -157,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				802F7549267411EF003C35CA /* FlashSettingViewController.swift */,
-				80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */,
 				8004D0B0268816590092FB91 /* QuestionViewController.swift */,
+				80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */,
 				80785AB326A3F139008895DA /* ResultViewController.swift */,
 				802F754B267411EF003C35CA /* Main.storyboard */,
 			);
