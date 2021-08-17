@@ -20,6 +20,7 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
     var soundStatus = 0
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
     }
@@ -51,6 +52,9 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
                 AudioServicesPlaySystemSound(1052)
             }
             questionList.append(Int(flashNumberLabel.text ?? "") ?? 0)
+            DispatchQueue.main.asyncAfter(deadline: .now() + interval/2) {
+                self.flashNumberLabel.text = ""
+            }
         }
         quesiton -= 1
     }

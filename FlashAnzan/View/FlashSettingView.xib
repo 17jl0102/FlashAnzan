@@ -34,7 +34,7 @@
                                     <color key="highlightedColor" name="AccentColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="2~100問" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="njN-L2-ACK">
-                                    <rect key="frame" x="167" y="7.5" width="232" height="35"/>
+                                    <rect key="frame" x="172" y="7.5" width="232" height="35"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
@@ -45,10 +45,15 @@
                                 <constraint firstAttribute="height" constant="50" id="Orf-3h-7O4"/>
                                 <constraint firstItem="cht-wM-5yV" firstAttribute="leading" secondItem="FUQ-C0-jDO" secondAttribute="leading" constant="15" id="Tzx-Gl-DlR"/>
                                 <constraint firstItem="njN-L2-ACK" firstAttribute="height" secondItem="FUQ-C0-jDO" secondAttribute="height" multiplier="7:10" id="dfq-v4-XcC"/>
-                                <constraint firstAttribute="trailing" secondItem="njN-L2-ACK" secondAttribute="trailing" constant="15" id="ogH-E3-VS6"/>
+                                <constraint firstAttribute="trailing" secondItem="njN-L2-ACK" secondAttribute="trailing" constant="10" id="ogH-E3-VS6"/>
                                 <constraint firstItem="njN-L2-ACK" firstAttribute="width" secondItem="FUQ-C0-jDO" secondAttribute="width" multiplier="28:50" id="qul-9O-cW3"/>
                                 <constraint firstItem="cht-wM-5yV" firstAttribute="centerY" secondItem="FUQ-C0-jDO" secondAttribute="centerY" id="wR3-2b-SIn"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5m2-tk-RLH">
                             <rect key="frame" x="0.0" y="70" width="414" height="50"/>
@@ -60,7 +65,7 @@
                                     <color key="highlightedColor" name="AccentColor"/>
                                 </label>
                                 <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1~5桁" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="amv-Gx-yDQ">
-                                    <rect key="frame" x="167" y="7.5" width="232" height="35"/>
+                                    <rect key="frame" x="172" y="7.5" width="232" height="35"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -70,6 +75,11 @@
                                 <constraint firstItem="amv-Gx-yDQ" firstAttribute="centerY" secondItem="5m2-tk-RLH" secondAttribute="centerY" id="Bfq-3N-8sK"/>
                                 <constraint firstItem="RW4-c7-jdG" firstAttribute="centerY" secondItem="5m2-tk-RLH" secondAttribute="centerY" id="MPI-oh-TbR"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEN-JO-S6S">
                             <rect key="frame" x="0.0" y="140" width="414" height="50"/>
@@ -81,7 +91,7 @@
                                     <color key="highlightedColor" name="AccentColor"/>
                                 </label>
                                 <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100~3000ミリ秒" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cGA-Er-qHC">
-                                    <rect key="frame" x="167" y="7.5" width="232" height="35"/>
+                                    <rect key="frame" x="172" y="7.5" width="232" height="35"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
@@ -91,6 +101,11 @@
                                 <constraint firstItem="cGA-Er-qHC" firstAttribute="centerY" secondItem="YEN-JO-S6S" secondAttribute="centerY" id="IIK-PV-2Qs"/>
                                 <constraint firstItem="LdL-jy-ho4" firstAttribute="centerY" secondItem="YEN-JO-S6S" secondAttribute="centerY" id="rKq-Zm-yAA"/>
                             </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <constraints>

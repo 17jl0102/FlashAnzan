@@ -77,7 +77,7 @@ extension FlashSettingViewController: FlashValueSetDelegate {
     
     func numberOfQuestionCheckAlert() {
         if setNumberOfQuestion == 0 {
-            alert(alertTitle: "未入力エラー", alertMessage: "問題数を設定してください")
+            alert(alertTitle: "入力エラー", alertMessage: "問題数を設定してください")
         } else if setNumberOfQuestion <= 1 || setNumberOfQuestion > 100  {
             alert(alertTitle: "条件エラー", alertMessage: "2~100問内で設定してください")
         }
@@ -85,13 +85,13 @@ extension FlashSettingViewController: FlashValueSetDelegate {
     
     func digitCheckAlert() {
         if setDigit == 0 {
-            alert(alertTitle: "未入力エラー", alertMessage: "桁数をを設定してください")
+            alert(alertTitle: "入力エラー", alertMessage: "桁数をを設定してください")
         }
     }
     
     func intervalCheckAlert() {
         if setInterval == 0 {
-            alert(alertTitle: "未入力エラー", alertMessage: "表示間隔を設定してください")
+            alert(alertTitle: "入力エラー", alertMessage: "表示間隔を設定してください")
         } else if setInterval < 0.1 || setInterval > 3 {
             alert(alertTitle: "条件エラー", alertMessage: "100~3000ミリ秒内で設定してください")
         }
