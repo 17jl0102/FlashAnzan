@@ -60,17 +60,23 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
     }
 
     func digitNumberGenerator(digit: Int) -> String {
-        let firstDigit = Int.random(in: 1...9)
+        let firstNum = Int.random(in: 1...9)
         var questionNum = ""
         if digit == 1 {
-            questionNum = String(firstDigit)
+            questionNum = String(firstNum)
             return questionNum
         } else {
-            questionNum = String(firstDigit)
+            var num = String(firstNum)
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.groupingSeparator = ","
+            formatter.groupingSize = 3
+            
             for _ in 1..<digit {
-                let randomInt = Int.random(in: 0...9)
-                questionNum += String(randomInt)
+                let randomNum = Int.random(in: 0...9)
+                num += String(randomNum)
             }
+            questionNum = formatter.string(from: NSNumber(value: Int(num) ?? 0)) ?? ""
         }
         return questionNum
     }
