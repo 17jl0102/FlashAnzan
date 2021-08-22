@@ -47,11 +47,16 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
             questionList = []
             soundStatus = 0
         } else {
+            var deleateCommmaNum: String
             flashNumberLabel.text = digitNumberGenerator(digit: digit)
             if soundStatus == 1 {
                 AudioServicesPlaySystemSound(1052)
             }
-            questionList.append(Int(flashNumberLabel.text ?? "") ?? 0)
+            deleateCommmaNum = flashNumberLabel.text ?? ""
+            deleateCommmaNum.removeAll{
+                $0 == ","
+            }
+            questionList.append(Int(deleateCommmaNum) ?? 0)
             DispatchQueue.main.asyncAfter(deadline: .now() + interval/2) {
                 self.flashNumberLabel.text = ""
             }

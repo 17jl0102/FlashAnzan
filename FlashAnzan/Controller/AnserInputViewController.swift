@@ -42,6 +42,11 @@ class AnserInputViewController: UIViewController {
     @IBAction func didTapAnserDoneButton(_ sender: UIButton) {
         if anserValue == 0 {
             alert(alertTitle: "回答が入力されていません", alertMessage: "回答を入力してください")
+        } else if anserValue > 10000000 {
+            anserValue = 0
+            anserInputView.inputValue = ""
+            anserInputLabel.text = ""
+            alert(alertTitle: "入力エラー", alertMessage: "10,000,000以内で入力してください")
         } else {
             let resultViewController = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
             resultViewController.anserValue = anserValue
@@ -52,7 +57,6 @@ class AnserInputViewController: UIViewController {
             quesitonList = []
         }
     }
-    
 }
 
 extension AnserInputViewController: AnserInputValueDelegate {

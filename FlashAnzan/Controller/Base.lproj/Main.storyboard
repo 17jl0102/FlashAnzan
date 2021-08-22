@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="65" id="48t-aR-RO8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.21159940958023071" green="0.21563407778739929" blue="0.20564073324203491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0D-hP-mVb">
@@ -95,7 +95,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31.884057971014496" y="116.51785714285714"/>
+            <point key="canvasLocation" x="31.199999999999999" y="116.49175412293854"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="Ze4-Pj-uvJ">
