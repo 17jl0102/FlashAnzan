@@ -12,18 +12,11 @@ class FlashSettingViewController: UIViewController {
     @IBOutlet weak var flashsettingView: FlashSettingView!
     @IBOutlet weak var soundControlButoon: UIButton!
     
-    var setNumberOfQuestion = 0
-    var setDigit = 0
-    var setInterval:Double = 0
-    var soundStatus = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         flashsettingView.delegate = self
         soundControlButoon.setTitle("音 有", for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(backFlashSettingViewController), name: Notification.Name("backFlashSettingViewController"), object: nil)
-        
-        
     }
     
     @objc func backFlashSettingViewController() {
@@ -41,22 +34,17 @@ class FlashSettingViewController: UIViewController {
         numberOfQuestionCheckAlert()
         digitCheckAlert()
         intervalCheckAlert()
-        if setNumberOfQuestion >= 2 && setNumberOfQuestion <= 100, setDigit >= 1 && setDigit <= 5, setInterval >= 0.1 && setInterval <= 3 {
-            questionViewController.numberOfQuestion = setNumberOfQuestion
-            questionViewController.digit = setDigit
-            questionViewController.interval = setInterval
-            questionViewController.soundStatus = soundStatus
+        if FlashAnzanManager.share.numberOfQuestion >= 2 && FlashAnzanManager.share.numberOfQuestion <= 100, FlashAnzanManager.share.digit >= 1 && FlashAnzanManager.share.digit <= 5, FlashAnzanManager.share.interval >= 0.1 && FlashAnzanManager.share.interval <= 3 {
             present(questionViewController, animated: true, completion: nil)
-            soundStatus = 0
         }
     }
     
     @IBAction func didTapSoundControl(_ sender: UIButton) {
-        if soundStatus == 0 {
-            soundStatus = 1
+        if FlashAnzanManager.share.soundStatus == 0 {
+            FlashAnzanManager.share.soundStatus = 1
             soundControlButoon.setTitle("音 無", for: .normal)
         } else {
-            soundStatus = 0
+            FlashAnzanManager.share.soundStatus = 0
             soundControlButoon.setTitle("音 有", for: .normal)
         }
     }
@@ -64,35 +52,35 @@ class FlashSettingViewController: UIViewController {
 
 extension FlashSettingViewController: FlashValueSetDelegate {
     func numberOfQuestionValueDelivery(numberOfQuestion: Int) {
-        setNumberOfQuestion = numberOfQuestion
+        FlashAnzanManager.share.numberOfQuestion = numberOfQuestion
     }
     
     func digitValueDelivery(digit: Int) {
-        setDigit = digit
+        FlashAnzanManager.share.digit = digit
     }
     
     func intervalValueDelivery(interval: Double) {
-        setInterval = Double(interval) / 1000
+        FlashAnzanManager.share.interval = Double(interval) / 1000
     }
     
     func numberOfQuestionCheckAlert() {
-        if setNumberOfQuestion == 0 {
+        if FlashAnzanManager.share.numberOfQuestion == 0 {
             alert(alertTitle: "入力エラー", alertMessage: "問題数を設定してください")
-        } else if setNumberOfQuestion <= 1 || setNumberOfQuestion > 100  {
+        } else if FlashAnzanManager.share.numberOfQuestion <= 1 || FlashAnzanManager.share.numberOfQuestion > 100  {
             alert(alertTitle: "条件エラー", alertMessage: "2~100問内で設定してください")
         }
     }
     
     func digitCheckAlert() {
-        if setDigit == 0 {
+        if FlashAnzanManager.share.digit == 0 {
             alert(alertTitle: "入力エラー", alertMessage: "桁数をを設定してください")
         }
     }
     
     func intervalCheckAlert() {
-        if setInterval == 0 {
+        if FlashAnzanManager.share.interval == 0 {
             alert(alertTitle: "入力エラー", alertMessage: "表示間隔を設定してください")
-        } else if setInterval < 0.1 || setInterval > 3 {
+        } else if FlashAnzanManager.share.interval < 0.1 || FlashAnzanManager.share.interval > 3 {
             alert(alertTitle: "条件エラー", alertMessage: "100~3000ミリ秒内で設定してください")
         }
     }

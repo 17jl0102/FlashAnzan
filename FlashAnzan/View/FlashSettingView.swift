@@ -25,9 +25,6 @@ class FlashSettingView: UIView {
     
     var digits:[Int] = ([Int])(1...5)
     let digitPicker = UIPickerView()
-    var numberOfQuestion: Int?
-    var digit: Int?
-    var interval: Double?
     var delegate: FlashValueSetDelegate?
     
     required override init(frame: CGRect) {
@@ -90,8 +87,8 @@ class FlashSettingView: UIView {
     @objc func didTapDigitDone() {
         let index = digitPicker.selectedRow(inComponent: 0)
         digitTextField.text = String(digits[index])
-        digit = digits[index]
-        delegate?.digitValueDelivery(digit: digit!)
+        FlashAnzanManager.share.digit = digits[index]
+        delegate?.digitValueDelivery(digit: FlashAnzanManager.share.digit)
         digitTextField.resignFirstResponder()
     }
     

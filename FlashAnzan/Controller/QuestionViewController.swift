@@ -11,13 +11,9 @@ import AudioToolbox
 class QuestionViewController: UIViewController, UIApplicationDelegate {
     
     @IBOutlet weak var flashNumberLabel: UILabel!
-    var numberOfQuestion = 0
-    var digit = 0
-    var interval:Double = 0
-    var questionList:[Int] = []
+
     private var timer: Timer?
     var quesiton = 0
-    var soundStatus = 0
     
     override func viewDidLoad() {
         
@@ -29,9 +25,9 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
         super.viewWillAppear(animated)
         flashNumberLabel.text = ""
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.timer = Timer.scheduledTimer(timeInterval: self.interval, target: self, selector: #selector(self.flashQuesitonDisplay), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: FlashAnzanManager.share.interval, target: self, selector: #selector(self.flashQuesitonDisplay), userInfo: nil, repeats: true)
         }
-        quesiton = numberOfQuestion
+        quesiton = FlashAnzanManager.share.numberOfQuestion
     }
     
     @objc func playAgain() {
@@ -42,22 +38,19 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
         if quesiton == 0 {
             timer?.invalidate()
             let anserInputViewController = storyboard?.instantiateViewController(withIdentifier: "AnserInputViewController") as! AnserInputViewController
-            anserInputViewController.quesitonList = questionList
             present(anserInputViewController, animated: true, completion: nil)
-            questionList = []
-            soundStatus = 0
         } else {
             var deleateCommmaNum: String
-            flashNumberLabel.text = digitNumberGenerator(digit: digit)
-            if soundStatus == 1 {
+            flashNumberLabel.text = digitNumberGenerator(digit: FlashAnzanManager.share.digit)
+            if FlashAnzanManager.share.soundStatus == 1 {
                 AudioServicesPlaySystemSound(1052)
             }
             deleateCommmaNum = flashNumberLabel.text ?? ""
             deleateCommmaNum.removeAll{
                 $0 == ","
             }
-            questionList.append(Int(deleateCommmaNum) ?? 0)
-            DispatchQueue.main.asyncAfter(deadline: .now() + interval/2) {
+            FlashAnzanManager.share.questionList.append(Int(deleateCommmaNum) ?? 0)
+            DispatchQueue.main.asyncAfter(deadline: .now() + FlashAnzanManager.share.interval/2) {
                 self.flashNumberLabel.text = ""
             }
         }
