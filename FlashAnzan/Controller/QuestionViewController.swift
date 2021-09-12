@@ -8,35 +8,44 @@
 import UIKit
 import AudioToolbox
 
-class QuestionViewController: UIViewController, UIApplicationDelegate {
+protocol TimerDelegate  {
+    func createTimer()
+}
+
+class QuestionViewController: UIViewController {
     
     @IBOutlet weak var flashNumberLabel: UILabel!
-
-    private var timer: Timer?
     var quesiton = 0
+    //var timer: Timer?
+    var delegate: TimerDelegate?
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            self.timer = Timer.scheduledTimer(timeInterval: FlashAnzanManager.share.interval, target: self, selector: #selector(self.flashQuesitonDisplay), userInfo: nil, repeats: true)
+//        }
+        delegate?.createTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         flashNumberLabel.text = ""
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.timer = Timer.scheduledTimer(timeInterval: FlashAnzanManager.share.interval, target: self, selector: #selector(self.flashQuesitonDisplay), userInfo: nil, repeats: true)
-        }
         quesiton = FlashAnzanManager.share.numberOfQuestion
     }
     
     @objc func playAgain() {
         dismiss(animated: true, completion: nil)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            self.timer = Timer.scheduledTimer(timeInterval: FlashAnzanManager.share.interval, target: self, selector: #selector(self.flashQuesitonDisplay), userInfo: nil, repeats: true)
+//        }
+        delegate?.createTimer()
     }
 
     @objc func flashQuesitonDisplay() {
         if quesiton == 0 {
-            timer?.invalidate()
+            FlashAnzanManager.share.timer?.invalidate()
             let anserInputViewController = storyboard?.instantiateViewController(withIdentifier: "AnserInputViewController") as! AnserInputViewController
             present(anserInputViewController, animated: true, completion: nil)
         } else {
@@ -79,3 +88,4 @@ class QuestionViewController: UIViewController, UIApplicationDelegate {
         return questionNum
     }
 }
+

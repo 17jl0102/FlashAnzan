@@ -15,6 +15,17 @@ class FlashAnzanManager {
     var soundStatus = 0
     var questionList:[Int] = []
     var anserValue = 0
+    let questionViewController = QuestionViewController()
+    var timer: Timer?
+    
     private init() {
+        questionViewController.delegate = self
     }
 }
+extension FlashAnzanManager: TimerDelegate {
+    
+    func createTimer() {
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(QuestionViewController.flashQuesitonDisplay), userInfo: nil, repeats: true)
+    }
+}
+
