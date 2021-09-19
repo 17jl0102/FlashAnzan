@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
+    
     
     @IBOutlet weak var anserJudgeLabel: UILabel!
     @IBOutlet weak var quesitonResultLabel: UILabel!
@@ -19,7 +19,7 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         quesitonResultLabel.text = String(quesitonResultInt)
         anserLabel.text = String(FlashAnzanManager.share.anserValue)
         if FlashAnzanManager.share.anserValue == quesitonResultInt {

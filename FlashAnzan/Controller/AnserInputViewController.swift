@@ -12,7 +12,7 @@ class AnserInputViewController: UIViewController {
     @IBOutlet weak var anserInputView: AnserInputView!
     
     @IBOutlet weak var anserInputLabel: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         anserInputView.delegate = self

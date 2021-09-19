@@ -14,7 +14,7 @@ protocol FlashValueSetDelegate {
     func numberOfQuestionCheckAlert()
     func digitCheckAlert()
     func intervalCheckAlert()
-    }
+}
 
 @IBDesignable
 class FlashSettingView: UIView {
@@ -34,6 +34,7 @@ class FlashSettingView: UIView {
         createNumberOfQuestionToolbar()
         createDigitToolbar()
         createIntervalToolbar()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)), name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
         
         NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)), name: UITextField.textDidChangeNotification, object: intervalTextField)
@@ -46,11 +47,11 @@ class FlashSettingView: UIView {
         createNumberOfQuestionToolbar()
         createDigitToolbar()
         createIntervalToolbar()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)), name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
         
         NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)), name: UITextField.textDidChangeNotification, object: intervalTextField)
     }
-    
     
     func createNumberOfQuestionToolbar() {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.width, height: 40))
@@ -115,7 +116,7 @@ class FlashSettingView: UIView {
         let flashSettingView = Bundle.main.loadNibNamed("FlashSettingView", owner: self, options: nil)?.first as! UIView
         flashSettingView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(flashSettingView)
-
+        
         flashSettingView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         flashSettingView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         flashSettingView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true

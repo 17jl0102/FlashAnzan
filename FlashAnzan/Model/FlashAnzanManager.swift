@@ -6,6 +6,13 @@
 //
 
 import Foundation
+import AudioToolbox
+
+protocol flashQuestionDelegate {
+    func anserInputViewControllerTransition()
+    func questionDisplay()
+    func blancDisplay()
+}
 
 class FlashAnzanManager {
     static let share = FlashAnzanManager()
@@ -15,17 +22,59 @@ class FlashAnzanManager {
     var soundStatus = 0
     var questionList:[Int] = []
     var anserValue = 0
-    let questionViewController = QuestionViewController()
     var timer: Timer?
+    var questionNum = ""
+    var flashQuestionNum = 0
+    var delegate: flashQuestionDelegate?
+    
     
     private init() {
-        questionViewController.delegate = self
     }
-}
-extension FlashAnzanManager: TimerDelegate {
     
-    func createTimer() {
-        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(QuestionViewController.flashQuesitonDisplay), userInfo: nil, repeats: true)
+    func executeTimer() {
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuestionDisplay), userInfo: nil, repeats: true)
+    }
+    
+    @objc func flashQuestionDisplay() {
+        if flashQuestionNum == 0 {
+            timer?.invalidate()
+            delegate?.anserInputViewControllerTransition()
+        } else {
+            delegate?.questionDisplay()
+            if FlashAnzanManager.share.soundStatus == 1 {
+                AudioServicesPlaySystemSound(1052)
+            }
+            questionNum.removeAll{
+                $0 == ","
+            }
+            FlashAnzanManager.share.questionList.append(Int(questionNum) ?? 0)
+            delegate?.blancDisplay()
+        }
+        flashQuestionNum -= 1
+    }
+    
+    func digitNumberGenerator(digit: Int) -> String {
+        let firstNum = Int.random(in: 1...9)
+        if digit == 1 {
+            questionNum = String(firstNum)
+            return questionNum
+        } else {
+            var num = String(firstNum)
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.groupingSeparator = ","
+            formatter.groupingSize = 3
+            
+            for _ in 1..<digit {
+                let randomNum = Int.random(in: 0...9)
+                num += String(randomNum)
+            }
+            questionNum = formatter.string(from: NSNumber(value: Int(num) ?? 0)) ?? ""
+        }
+        return questionNum
+    }
+    
+    func deliveryNumberOfQuestionValue() {
+        flashQuestionNum = numberOfQuestion
     }
 }
-

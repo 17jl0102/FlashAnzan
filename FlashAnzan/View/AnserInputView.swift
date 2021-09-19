@@ -89,8 +89,4 @@ class AnserInputView: UIView {
         inputValue = String(inputValue.dropLast())
         delegate?.anserInputValue(value: inputValue)
     }
-    
-    
-    
-    
 }
