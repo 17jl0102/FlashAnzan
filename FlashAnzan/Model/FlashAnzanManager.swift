@@ -10,7 +10,7 @@ import AudioToolbox
 
 protocol flashQuestionDelegate {
     func anserInputViewControllerTransition()
-    func questionDisplay()
+    func questionDisplay(displayNum: String)
     func blancDisplay()
 }
 
@@ -40,14 +40,14 @@ class FlashAnzanManager {
             timer?.invalidate()
             delegate?.anserInputViewControllerTransition()
         } else {
-            delegate?.questionDisplay()
+            delegate?.questionDisplay(displayNum: digitNumberGenerator(digit: FlashAnzanManager.share.digit))
             if FlashAnzanManager.share.soundStatus == 1 {
                 AudioServicesPlaySystemSound(1052)
             }
             questionNum.removeAll{
                 $0 == ","
             }
-            FlashAnzanManager.share.questionList.append(Int(questionNum) ?? 0)
+            questionList.append(Int(questionNum) ?? 0)
             delegate?.blancDisplay()
         }
         flashQuestionNum -= 1

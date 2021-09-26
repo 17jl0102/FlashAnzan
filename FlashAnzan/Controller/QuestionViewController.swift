@@ -36,13 +36,14 @@ class QuestionViewController: UIViewController {
 }
 
 extension QuestionViewController: flashQuestionDelegate {
+
     func anserInputViewControllerTransition() {
         let anserInputViewController = storyboard?.instantiateViewController(withIdentifier: "AnserInputViewController") as! AnserInputViewController
         present(anserInputViewController, animated: true, completion: nil)
     }
     
-    func questionDisplay() {
-        flashNumberLabel.text = FlashAnzanManager.share.digitNumberGenerator(digit: FlashAnzanManager.share.digit)
+    func questionDisplay(displayNum: String) {
+        flashNumberLabel.text = displayNum
     }
     
     func blancDisplay() {
