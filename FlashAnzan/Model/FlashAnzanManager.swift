@@ -15,18 +15,17 @@ protocol flashQuestionDelegate {
 }
 
 class FlashAnzanManager {
-    static let share = FlashAnzanManager()
+    static let flashAnZanShare = FlashAnzanManager()
     var numberOfQuestion = 0
     var digit = 0
     var interval = 0.0
-    var soundStatus = 0
+    var soundStatus:Bool = true
     var questionList:[Int] = []
     var anserValue = 0
     var timer: Timer?
     var questionNum = ""
     var flashQuestionNum = 0
     var delegate: flashQuestionDelegate?
-    
     
     private init() {
     }
@@ -40,8 +39,8 @@ class FlashAnzanManager {
             timer?.invalidate()
             delegate?.anserInputViewControllerTransition()
         } else {
-            delegate?.questionDisplay(displayNum: digitNumberGenerator(digit: FlashAnzanManager.share.digit))
-            if FlashAnzanManager.share.soundStatus == 1 {
+            delegate?.questionDisplay(displayNum: digitNumberGenerator(digit: FlashAnzanManager.flashAnZanShare.digit))
+            if FlashAnzanManager.flashAnZanShare.soundStatus == true {
                 AudioServicesPlaySystemSound(1052)
             }
             questionNum.removeAll{

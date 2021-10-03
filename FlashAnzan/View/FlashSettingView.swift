@@ -88,8 +88,8 @@ class FlashSettingView: UIView {
     @objc func didTapDigitDone() {
         let index = digitPicker.selectedRow(inComponent: 0)
         digitTextField.text = String(digits[index])
-        FlashAnzanManager.share.digit = digits[index]
-        delegate?.digitValueDelivery(digit: FlashAnzanManager.share.digit)
+        FlashAnzanManager.flashAnZanShare.digit = digits[index]
+        delegate?.digitValueDelivery(digit: FlashAnzanManager.flashAnZanShare.digit)
         digitTextField.resignFirstResponder()
     }
     

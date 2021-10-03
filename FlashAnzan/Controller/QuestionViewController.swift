@@ -13,11 +13,11 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FlashAnzanManager.share.delegate = self
+        FlashAnzanManager.flashAnZanShare.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            FlashAnzanManager.share.deliveryNumberOfQuestionValue()
-            FlashAnzanManager.share.executeTimer()
+            FlashAnzanManager.flashAnZanShare.deliveryNumberOfQuestionValue()
+            FlashAnzanManager.flashAnZanShare.executeTimer()
         }
     }
     
@@ -29,8 +29,8 @@ class QuestionViewController: UIViewController {
     @objc func playAgain() {
         dismiss(animated: true, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            FlashAnzanManager.share.deliveryNumberOfQuestionValue()
-            FlashAnzanManager.share.executeTimer()
+            FlashAnzanManager.flashAnZanShare.deliveryNumberOfQuestionValue()
+            FlashAnzanManager.flashAnZanShare.executeTimer()
         }
     }
 }
@@ -47,7 +47,7 @@ extension QuestionViewController: flashQuestionDelegate {
     }
     
     func blancDisplay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + FlashAnzanManager.share.interval/2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + FlashAnzanManager.flashAnZanShare.interval/2) {
             self.flashNumberLabel.text = ""
         }
     }

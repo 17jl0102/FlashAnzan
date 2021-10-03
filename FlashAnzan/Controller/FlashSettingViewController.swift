@@ -12,15 +12,26 @@ class FlashSettingViewController: UIViewController {
     @IBOutlet weak var flashsettingView: FlashSettingView!
     @IBOutlet weak var soundControlButoon: UIButton!
     
+    var resumeListTableViewCell = ResumeListTableViewCell()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         flashsettingView.delegate = self
+        resumeListTableViewCell.delegate = self
+        
         soundControlButoon.setTitle("音 有", for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(backFlashSettingViewController), name: Notification.Name("backFlashSettingViewController"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resumePlay), name: Notification.Name("resumePlay"), object: nil)
     }
     
     @objc func backFlashSettingViewController() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func resumePlay() {
+        dismiss(animated: true, completion: nil)
+        let questionViewController = storyboard?.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
+        present(questionViewController, animated: true, completion: nil)
     }
     
     func alert(alertTitle: String, alertMessage: String) {
@@ -34,54 +45,67 @@ class FlashSettingViewController: UIViewController {
         numberOfQuestionCheckAlert()
         digitCheckAlert()
         intervalCheckAlert()
-        if FlashAnzanManager.share.numberOfQuestion >= 2 && FlashAnzanManager.share.numberOfQuestion <= 100, FlashAnzanManager.share.digit >= 1 && FlashAnzanManager.share.digit <= 5, FlashAnzanManager.share.interval >= 0.1 && FlashAnzanManager.share.interval <= 3 {
+        if FlashAnzanManager.flashAnZanShare.numberOfQuestion >= 2 && FlashAnzanManager.flashAnZanShare.numberOfQuestion <= 100, FlashAnzanManager.flashAnZanShare.digit >= 1 && FlashAnzanManager.flashAnZanShare.digit <= 5, FlashAnzanManager.flashAnZanShare.interval >= 0.1 && FlashAnzanManager.flashAnZanShare.interval <= 3 {
             present(questionViewController, animated: true, completion: nil)
         }
     }
     
     @IBAction func didTapSoundControl(_ sender: UIButton) {
-        if FlashAnzanManager.share.soundStatus == 0 {
-            FlashAnzanManager.share.soundStatus = 1
+        if FlashAnzanManager.flashAnZanShare.soundStatus == true {
+            FlashAnzanManager.flashAnZanShare.soundStatus.toggle()
             soundControlButoon.setTitle("音 無", for: .normal)
         } else {
-            FlashAnzanManager.share.soundStatus = 0
+            FlashAnzanManager.flashAnZanShare.soundStatus.toggle()
             soundControlButoon.setTitle("音 有", for: .normal)
         }
     }
 }
 
-extension FlashSettingViewController: FlashValueSetDelegate {
+extension FlashSettingViewController: FlashValueSetDelegate, ResumeValueSetDelegate {
+    
     func numberOfQuestionValueDelivery(numberOfQuestion: Int) {
-        FlashAnzanManager.share.numberOfQuestion = numberOfQuestion
+        FlashAnzanManager.flashAnZanShare.numberOfQuestion = numberOfQuestion
     }
     
     func digitValueDelivery(digit: Int) {
-        FlashAnzanManager.share.digit = digit
+        FlashAnzanManager.flashAnZanShare.digit = digit
     }
     
     func intervalValueDelivery(interval: Double) {
-        FlashAnzanManager.share.interval = Double(interval) / 1000
+        FlashAnzanManager.flashAnZanShare.interval = Double(interval) / 1000
     }
     
     func numberOfQuestionCheckAlert() {
-        if FlashAnzanManager.share.numberOfQuestion == 0 {
+        if FlashAnzanManager.flashAnZanShare.numberOfQuestion == 0 {
             alert(alertTitle: "入力エラー", alertMessage: "問題数を設定してください")
-        } else if FlashAnzanManager.share.numberOfQuestion <= 1 || FlashAnzanManager.share.numberOfQuestion > 100  {
+        } else if FlashAnzanManager.flashAnZanShare.numberOfQuestion <= 1 || FlashAnzanManager.flashAnZanShare.numberOfQuestion > 100  {
             alert(alertTitle: "条件エラー", alertMessage: "2~100問内で設定してください")
         }
     }
     
     func digitCheckAlert() {
-        if FlashAnzanManager.share.digit == 0 {
+        if FlashAnzanManager.flashAnZanShare.digit == 0 {
             alert(alertTitle: "入力エラー", alertMessage: "桁数をを設定してください")
         }
     }
     
     func intervalCheckAlert() {
-        if FlashAnzanManager.share.interval == 0 {
+        if FlashAnzanManager.flashAnZanShare.interval == 0 {
             alert(alertTitle: "入力エラー", alertMessage: "表示間隔を設定してください")
-        } else if FlashAnzanManager.share.interval < 0.1 || FlashAnzanManager.share.interval > 3 {
+        } else if FlashAnzanManager.flashAnZanShare.interval < 0.1 || FlashAnzanManager.flashAnZanShare.interval > 3 {
             alert(alertTitle: "条件エラー", alertMessage: "100~3000ミリ秒内で設定してください")
         }
+    }
+    
+    func saveNumberOfQuestionValueDelibery(numberOfQuestion: Int) {
+        FlashAnzanManager.flashAnZanShare.numberOfQuestion = numberOfQuestion
+    }
+    
+    func saveDigitValueDelibery(digit: Int) {
+        FlashAnzanManager.flashAnZanShare.digit = digit
+    }
+    
+    func saveIntervalValueDelibery(interval: Double) {
+        FlashAnzanManager.flashAnZanShare.interval = interval
     }
 }
