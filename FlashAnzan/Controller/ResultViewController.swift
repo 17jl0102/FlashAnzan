@@ -35,12 +35,12 @@ class ResultViewController: UIViewController {
     
     @IBAction func DidTapPlayAgainButton(_ sender: UIButton) {
         FlashAnzanManager.flashAnZanShare.questionList = []
-        NotificationCenter.default.post(name: Notification.Name("playAgain"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name.playAgain, object: nil)
     }
     
     @IBAction func DidTapBackFlashSettingViewControllerButton(_ sender: UIButton) {
         FlashAnzanManager.flashAnZanShare.questionList = []
-        NotificationCenter.default.post(name: Notification.Name("backFlashSettingViewController"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name.backFlashSettingViewController, object: nil)
     }
     
 }

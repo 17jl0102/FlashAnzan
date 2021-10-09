@@ -11,7 +11,7 @@ class ResumeViewController: UIViewController {
     
     @IBOutlet weak var resumeTableView: UITableView!
     var resumeManager: ResumeManager!
-    var resumes: [ResumeManager] = []
+    var resumes: [Resume] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,9 @@ class ResumeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        resumes =  [ResumeManager(savedNumberOfQuestion: 3, savedDigit: 1, savedInterval: 1.0, savedAnserJudge: true)] //ResumeManager.resumes()
+        resumes =  [Resume(numberOfQuestion: 3, digit: 1, interval: 1.0, anserJudge: true),Resume(numberOfQuestion: 4, digit: 2, interval: 0.8, anserJudge: false)]
+        let testResume = Resume(numberOfQuestion: 3, digit: 1, interval: 1.0, anserJudge: true)
+        ResumeManager.addResumes(resume: testResume)
         resumeTableView.reloadData()
     }
 }

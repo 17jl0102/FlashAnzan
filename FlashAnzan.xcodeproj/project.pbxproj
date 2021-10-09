@@ -21,7 +21,9 @@
 		805C0D2F27088A25005577AF /* ResumeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C0D2E27088A25005577AF /* ResumeManager.swift */; };
 		806F424B26E47FC700095566 /* FlashAnzanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806F424A26E47FC700095566 /* FlashAnzanManager.swift */; };
 		80785AB426A3F139008895DA /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80785AB326A3F139008895DA /* ResultViewController.swift */; };
+		80950E2B2711231700ED3D46 /* Resume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80950E2A2711231700ED3D46 /* Resume.swift */; };
 		80A987A127093F40002FF2FC /* ResumeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A987A027093F40002FF2FC /* ResumeListTableViewCell.swift */; };
+		80A987A327096C14002FF2FC /* NotificationName+FlashAnzan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A987A227096C14002FF2FC /* NotificationName+FlashAnzan.swift */; };
 		80CF5A5A27001CAB00ED63C1 /* ResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CF5A5927001CAB00ED63C1 /* ResumeViewController.swift */; };
 		80E98ECE26A3A80200C99A54 /* AnserInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */; };
 		80E98ED126A3AC2C00C99A54 /* AnserInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80E98ED026A3AC2C00C99A54 /* AnserInputView.xib */; };
@@ -66,7 +68,9 @@
 		805C0D2E27088A25005577AF /* ResumeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeManager.swift; sourceTree = "<group>"; };
 		806F424A26E47FC700095566 /* FlashAnzanManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashAnzanManager.swift; sourceTree = "<group>"; };
 		80785AB326A3F139008895DA /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		80950E2A2711231700ED3D46 /* Resume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resume.swift; sourceTree = "<group>"; };
 		80A987A027093F40002FF2FC /* ResumeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeListTableViewCell.swift; sourceTree = "<group>"; };
+		80A987A227096C14002FF2FC /* NotificationName+FlashAnzan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+FlashAnzan.swift"; sourceTree = "<group>"; };
 		80CF5A5927001CAB00ED63C1 /* ResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeViewController.swift; sourceTree = "<group>"; };
 		80E98ECC26A3A80200C99A54 /* AnserInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnserInputViewController.swift; sourceTree = "<group>"; };
 		80E98ED026A3AC2C00C99A54 /* AnserInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnserInputView.xib; sourceTree = "<group>"; };
@@ -179,8 +183,10 @@
 		806F424926E47FC700095566 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80A987A227096C14002FF2FC /* NotificationName+FlashAnzan.swift */,
 				806F424A26E47FC700095566 /* FlashAnzanManager.swift */,
 				805C0D2E27088A25005577AF /* ResumeManager.swift */,
+				80950E2A2711231700ED3D46 /* Resume.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,10 +328,12 @@
 				802F754A267411EF003C35CA /* FlashSettingViewController.swift in Sources */,
 				80E98ED326A3AC4F00C99A54 /* AnserInputView.swift in Sources */,
 				80CF5A5A27001CAB00ED63C1 /* ResumeViewController.swift in Sources */,
+				80A987A327096C14002FF2FC /* NotificationName+FlashAnzan.swift in Sources */,
 				80E98ECE26A3A80200C99A54 /* AnserInputViewController.swift in Sources */,
 				80785AB426A3F139008895DA /* ResultViewController.swift in Sources */,
 				8004D0B1268816590092FB91 /* QuestionViewController.swift in Sources */,
 				80A987A127093F40002FF2FC /* ResumeListTableViewCell.swift in Sources */,
+				80950E2B2711231700ED3D46 /* Resume.swift in Sources */,
 				802F757B26762E8B003C35CA /* FlashSettingView.swift in Sources */,
 				802F7546267411EF003C35CA /* AppDelegate.swift in Sources */,
 				802F7548267411EF003C35CA /* SceneDelegate.swift in Sources */,

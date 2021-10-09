@@ -14,7 +14,7 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         FlashAnzanManager.flashAnZanShare.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name("playAgain"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name.playAgain, object: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             FlashAnzanManager.flashAnZanShare.deliveryNumberOfQuestionValue()
             FlashAnzanManager.flashAnZanShare.executeTimer()

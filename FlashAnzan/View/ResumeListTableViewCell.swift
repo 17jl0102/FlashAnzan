@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 
 protocol ResumeValueSetDelegate {
-    func saveNumberOfQuestionValueDelibery(numberOfQuestion: Int)
-    func saveDigitValueDelibery(digit: Int)
-    func saveIntervalValueDelibery(interval: Double)
+    func resumeValueDelibery(numberOfQuestion: Int, digit: Int, interval: Double)
 }
 
 class ResumeListTableViewCell: UITableViewCell {
@@ -22,17 +20,17 @@ class ResumeListTableViewCell: UITableViewCell {
     @IBOutlet weak var anserJudgeLabel: UILabel!
     
     var index = 0
-    var resumeManager: ResumeManager!
+    var resume: Resume!
     var delegate: ResumeValueSetDelegate?
     
     
-    func setup(resume: ResumeManager, indexPath: IndexPath) {
+    func setup(resume: Resume, indexPath: IndexPath) {
         self.index = indexPath.row
-        self.resumeManager = resume
-        numberOfQuestionLabel.text = String(resumeManager.savedNumberOfQuestion)
-        digitLabel.text = String(resumeManager.savedNumberOfQuestion)
-        intervalLabel.text = String(resumeManager.savedInterval)
-        anserJudgeLabelSet(anserJudge: resumeManager.savedAnserJudge)
+        self.resume = resume
+        numberOfQuestionLabel.text = String(resume.numberOfQuestion)
+        digitLabel.text = String(resume.digit)
+        intervalLabel.text = String(resume.interval)
+        anserJudgeLabelSet(anserJudge: resume.anserJudge)
     }
     
     func anserJudgeLabelSet(anserJudge: Bool) {
@@ -44,10 +42,9 @@ class ResumeListTableViewCell: UITableViewCell {
     }
     
     @IBAction func DidTapPlayResumeQuestionButton(_ sender: UIButton) {
-        let resumes = resumeManager.resumes()
-        delegate?.saveNumberOfQuestionValueDelibery(numberOfQuestion: resumes[index].savedNumberOfQuestion)
-        delegate?.saveDigitValueDelibery(digit: resumes[index].savedDigit)
-        delegate?.saveIntervalValueDelibery(interval: resumes[index].savedInterval)
-        NotificationCenter.default.post(name: Notification.Name("resumePlay"), object: nil)
+        let resumes = ResumeManager.resumes()
+        let resume = resumes[index]
+        delegate?.resumeValueDelibery(numberOfQuestion: resume.numberOfQuestion, digit: resume.digit, interval: resume.interval)
+        NotificationCenter.default.post(name: .resumePlay, object: nil)
     }
 }

@@ -19,9 +19,10 @@ class FlashSettingViewController: UIViewController {
         flashsettingView.delegate = self
         resumeListTableViewCell.delegate = self
         
+        
         soundControlButoon.setTitle("音 有", for: .normal)
-        NotificationCenter.default.addObserver(self, selector: #selector(backFlashSettingViewController), name: Notification.Name("backFlashSettingViewController"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(resumePlay), name: Notification.Name("resumePlay"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(backFlashSettingViewController), name: Notification.Name.backFlashSettingViewController, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resumePlay), name: .resumePlay, object: nil)
     }
     
     @objc func backFlashSettingViewController() {
@@ -61,7 +62,7 @@ class FlashSettingViewController: UIViewController {
     }
 }
 
-extension FlashSettingViewController: FlashValueSetDelegate, ResumeValueSetDelegate {
+extension FlashSettingViewController: FlashValueSetDelegate {
     
     func numberOfQuestionValueDelivery(numberOfQuestion: Int) {
         FlashAnzanManager.flashAnZanShare.numberOfQuestion = numberOfQuestion
@@ -96,16 +97,12 @@ extension FlashSettingViewController: FlashValueSetDelegate, ResumeValueSetDeleg
             alert(alertTitle: "条件エラー", alertMessage: "100~3000ミリ秒内で設定してください")
         }
     }
-    
-    func saveNumberOfQuestionValueDelibery(numberOfQuestion: Int) {
+}
+
+extension FlashSettingViewController: ResumeValueSetDelegate {
+    func resumeValueDelibery(numberOfQuestion: Int, digit: Int, interval: Double) {
         FlashAnzanManager.flashAnZanShare.numberOfQuestion = numberOfQuestion
-    }
-    
-    func saveDigitValueDelibery(digit: Int) {
         FlashAnzanManager.flashAnZanShare.digit = digit
-    }
-    
-    func saveIntervalValueDelibery(interval: Double) {
         FlashAnzanManager.flashAnZanShare.interval = interval
     }
 }

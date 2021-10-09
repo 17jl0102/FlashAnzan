@@ -6,54 +6,24 @@
 //
 
 import Foundation
-import UIKit
 
-class ResumeManager: NSObject, NSCoding {
+struct ResumeManager {
     
-    let savedNumberOfQuestion: Int
-    let savedDigit: Int
-    let savedInterval: Double
-    let savedAnserJudge: Bool
-    
-    init(savedNumberOfQuestion: Int, savedDigit: Int, savedInterval: Double, savedAnserJudge: Bool) {
-        self.savedNumberOfQuestion = savedNumberOfQuestion
-        self.savedDigit = savedDigit
-        self.savedInterval = savedInterval
-        self.savedAnserJudge = savedAnserJudge
+    static func resumes() -> [Resume] {
+        let resumeData = UserDefaults.standard.data(forKey: "resume")
+        return (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(resumeData ?? Data()) as? [Resume] ?? []) ?? []
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(savedNumberOfQuestion, forKey: "savedNumberOfQuestion")
-        aCoder.encode(savedDigit, forKey: "savedDigit")
-        aCoder.encode(savedInterval, forKey: "savedInterval")
-        aCoder.encode(savedAnserJudge, forKey: "savedAnserJudge")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        savedNumberOfQuestion = aDecoder.decodeObject(forKey: "savedNumberOfQuestion") as! Int
-        savedDigit = aDecoder.decodeInteger(forKey: "savedDigit")
-        savedInterval = aDecoder.decodeDouble(forKey: "savedInterval")
-        savedAnserJudge = aDecoder.decodeBool(forKey: "savedAnserJudge")
-    }
-    
-        func resumes() -> [ResumeManager] {
-            let resumeData = UserDefaults.standard.data(forKey: "resume")
-            return (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(resumeData ?? Data()) as? [ResumeManager] ?? []) ?? []
-        }
+    static func addResumes(resume: Resume) {
+        let resumeData = UserDefaults.standard.data(forKey: "resume")
+        let unArchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(resumeData ?? Data()) as? [Resume] ?? []
+        var resumes = unArchivedData ?? []
+        resumes.append(resume)
         
-        func addResumes(resume: ResumeManager) {
-            let resumeData = UserDefaults.standard.data(forKey: "resume")
-            let unArchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(resumeData ?? Data()) as? [ResumeManager] ?? []
-            var resumes = unArchivedData ?? []
-            resumes.append(resume)
-            resumeUpdate(resumes: resumes)
-            UserDefaults.standard.synchronize()
-        }
-        
-        func resumeUpdate(resumes: [ResumeManager]) {
-            let tasksArchived = try! NSKeyedArchiver.archivedData(withRootObject: resumes, requiringSecureCoding: false)
-            UserDefaults.standard.set(tasksArchived, forKey: "resume")
-        }
+        let tasksArchived = try! NSKeyedArchiver.archivedData(withRootObject: resumes, requiringSecureCoding: false)
+        UserDefaults.standard.set(tasksArchived, forKey: "resume")
+        UserDefaults.standard.synchronize()
+    }
 }
 
 
