@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ResumeValueSetDelegate {
-    func resumeValueDelibery(numberOfQuestion: Int, digit: Int, interval: Double)
+    func resumeValueDelibery(resume:Resume)
 }
 
 class ResumeListTableViewCell: UITableViewCell {
@@ -44,7 +44,7 @@ class ResumeListTableViewCell: UITableViewCell {
     @IBAction func DidTapPlayResumeQuestionButton(_ sender: UIButton) {
         let resumes = ResumeManager.resumes()
         let resume = resumes[index]
-        delegate?.resumeValueDelibery(numberOfQuestion: resume.numberOfQuestion, digit: resume.digit, interval: resume.interval)
+        delegate?.resumeValueDelibery(resume: resume)
         NotificationCenter.default.post(name: .resumePlay, object: nil)
     }
 }

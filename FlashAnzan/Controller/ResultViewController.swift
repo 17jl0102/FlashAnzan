@@ -24,13 +24,18 @@ class ResultViewController: UIViewController {
         anserLabel.text = String(FlashAnzanManager.flashAnZanShare.anserValue)
         if FlashAnzanManager.flashAnZanShare.anserValue == quesitonResultInt {
             anserJudgeLabel.text = "正解です"
+            FlashAnzanManager.flashAnZanShare.anserJudge = true
         } else {
             anserJudgeLabel.text = "不正解です"
+            FlashAnzanManager.flashAnZanShare.anserJudge = false
         }
         
         for quesiton in FlashAnzanManager.flashAnZanShare.questionList {
             questionLabel.text! += "\(quesiton)\n"
         }
+        
+        let result = Resume(numberOfQuestion: FlashAnzanManager.flashAnZanShare.numberOfQuestion, digit: FlashAnzanManager.flashAnZanShare.digit, interval: FlashAnzanManager.flashAnZanShare.interval, anserJudge: FlashAnzanManager.flashAnZanShare.anserJudge)
+        ResumeManager.addResumes(resume: result)
     }
     
     @IBAction func DidTapPlayAgainButton(_ sender: UIButton) {

@@ -22,6 +22,7 @@ class FlashAnzanManager {
     var soundStatus:Bool = true
     var questionList:[Int] = []
     var anserValue = 0
+    var anserJudge:Bool = true
     var timer: Timer?
     var questionNum = ""
     var flashQuestionNum = 0

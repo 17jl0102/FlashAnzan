@@ -20,8 +20,8 @@ struct ResumeManager {
         var resumes = unArchivedData ?? []
         resumes.append(resume)
         
-        let tasksArchived = try! NSKeyedArchiver.archivedData(withRootObject: resumes, requiringSecureCoding: false)
-        UserDefaults.standard.set(tasksArchived, forKey: "resume")
+        let resumesArchived = try! NSKeyedArchiver.archivedData(withRootObject: resumes, requiringSecureCoding: false)
+        UserDefaults.standard.set(resumesArchived, forKey: "resume")
         UserDefaults.standard.synchronize()
     }
 }

@@ -12,16 +12,14 @@ class FlashSettingViewController: UIViewController {
     @IBOutlet weak var flashsettingView: FlashSettingView!
     @IBOutlet weak var soundControlButoon: UIButton!
     
-    var resumeListTableViewCell = ResumeListTableViewCell()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         flashsettingView.delegate = self
-        resumeListTableViewCell.delegate = self
-        
         
         soundControlButoon.setTitle("音 有", for: .normal)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(backFlashSettingViewController), name: Notification.Name.backFlashSettingViewController, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(resumePlay), name: .resumePlay, object: nil)
     }
     
@@ -96,13 +94,5 @@ extension FlashSettingViewController: FlashValueSetDelegate {
         } else if FlashAnzanManager.flashAnZanShare.interval < 0.1 || FlashAnzanManager.flashAnZanShare.interval > 3 {
             alert(alertTitle: "条件エラー", alertMessage: "100~3000ミリ秒内で設定してください")
         }
-    }
-}
-
-extension FlashSettingViewController: ResumeValueSetDelegate {
-    func resumeValueDelibery(numberOfQuestion: Int, digit: Int, interval: Double) {
-        FlashAnzanManager.flashAnZanShare.numberOfQuestion = numberOfQuestion
-        FlashAnzanManager.flashAnZanShare.digit = digit
-        FlashAnzanManager.flashAnZanShare.interval = interval
     }
 }
