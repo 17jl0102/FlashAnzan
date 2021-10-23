@@ -42,8 +42,7 @@ extension ResumeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             resumes.remove(at: indexPath.row)
-            let resumeArchived = try! NSKeyedArchiver.archivedData(withRootObject: resumes, requiringSecureCoding: false)
-            UserDefaults.standard.set(resumeArchived, forKey: "resume")
+            ResumeManager.resumeUpdate(resumes: resumes)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
     }
@@ -53,10 +52,10 @@ extension ResumeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ResumeViewController: ResumeValueSetDelegate {
-    func resumeValueDelibery(resume: Resume) {
-        FlashAnzanManager.flashAnZanShare.numberOfQuestion = resume.numberOfQuestion
-        FlashAnzanManager.flashAnZanShare.digit = resume.digit
-        FlashAnzanManager.flashAnZanShare.interval = resume.interval
+extension ResumeViewController: ResumeListTableViewCellDelegate {
+    func resumeToFlashAnzanManager(resume: Resume) {
+        FlashAnzanManager.Shared.numberOfQuestion = resume.numberOfQuestion
+        FlashAnzanManager.Shared.digit = resume.digit
+        FlashAnzanManager.Shared.interval = resume.interval
     }
 }

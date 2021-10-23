@@ -23,7 +23,7 @@ class FlashSettingView: UIView {
     @IBOutlet weak var digitTextField: UITextField!
     @IBOutlet weak var intervalTextField: UITextField!
     
-    var digits:[Int] = ([Int])(1...5)
+    var digits: [Int] = ([Int])(1...5)
     let digitPicker = UIPickerView()
     var delegate: FlashValueSetDelegate?
     
@@ -35,9 +35,11 @@ class FlashSettingView: UIView {
         createDigitToolbar()
         createIntervalToolbar()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)), name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
+        NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)),
+                                               name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)), name: UITextField.textDidChangeNotification, object: intervalTextField)
+        NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)),
+                                               name: UITextField.textDidChangeNotification, object: intervalTextField)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,9 +50,11 @@ class FlashSettingView: UIView {
         createDigitToolbar()
         createIntervalToolbar()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)), name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
+        NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)),
+                                               name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)), name: UITextField.textDidChangeNotification, object: intervalTextField)
+        NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)),
+                                               name: UITextField.textDidChangeNotification, object: intervalTextField)
     }
     
     func createNumberOfQuestionToolbar() {
@@ -74,7 +78,7 @@ class FlashSettingView: UIView {
         intervalTextField.inputAccessoryView = toolbar
     }
     
-    func createDigitPicker(digits:[Int]) {
+    func createDigitPicker(digits: [Int]) {
         digitPicker.delegate = self
         digitPicker.dataSource = self
         digitTextField.inputView = digitPicker
@@ -88,8 +92,8 @@ class FlashSettingView: UIView {
     @objc func didTapDigitDone() {
         let index = digitPicker.selectedRow(inComponent: 0)
         digitTextField.text = String(digits[index])
-        FlashAnzanManager.flashAnZanShare.digit = digits[index]
-        delegate?.digitValueDelivery(digit: FlashAnzanManager.flashAnZanShare.digit)
+        FlashAnzanManager.Shared.digit = digits[index]
+        delegate?.digitValueDelivery(digit: FlashAnzanManager.Shared.digit)
         digitTextField.resignFirstResponder()
     }
     

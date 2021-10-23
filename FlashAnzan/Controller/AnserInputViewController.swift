@@ -20,7 +20,7 @@ class AnserInputViewController: UIViewController {
     }
     
     func buttonControl() {
-        if FlashAnzanManager.flashAnZanShare.anserValue == 0 {
+        if FlashAnzanManager.Shared.anserValue == 0 {
             anserInputView.doubleZeroButton.isEnabled = false
             anserInputView.zeroButton.isEnabled = false
             anserInputView.clearButton.isEnabled = false
@@ -38,10 +38,10 @@ class AnserInputViewController: UIViewController {
     }
     
     @IBAction func didTapAnserDoneButton(_ sender: UIButton) {
-        if FlashAnzanManager.flashAnZanShare.anserValue == 0 {
+        if FlashAnzanManager.Shared.anserValue == 0 {
             alert(alertTitle: "回答が入力されていません", alertMessage: "回答を入力してください")
-        } else if FlashAnzanManager.flashAnZanShare.anserValue > 10000000 {
-            FlashAnzanManager.flashAnZanShare.anserValue = 0
+        } else if FlashAnzanManager.Shared.anserValue > 10000000 {
+            FlashAnzanManager.Shared.anserValue = 0
             anserInputView.inputValue = ""
             anserInputLabel.text = ""
             alert(alertTitle: "入力エラー", alertMessage: "10,000,000以内で入力してください")
@@ -54,7 +54,7 @@ class AnserInputViewController: UIViewController {
 
 extension AnserInputViewController: AnserInputValueDelegate {
     func anserInputValue(value: String) {
-        FlashAnzanManager.flashAnZanShare.anserValue = Int(value) ?? 0
+        FlashAnzanManager.Shared.anserValue = Int(value) ?? 0
         anserInputLabel.text = value
         buttonControl()
     }

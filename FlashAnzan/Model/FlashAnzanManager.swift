@@ -15,14 +15,14 @@ protocol flashQuestionDelegate {
 }
 
 class FlashAnzanManager {
-    static let flashAnZanShare = FlashAnzanManager()
+    static let Shared = FlashAnzanManager()
     var numberOfQuestion = 0
     var digit = 0
     var interval = 0.0
-    var soundStatus:Bool = true
-    var questionList:[Int] = []
+    var soundStatus: Bool = true
+    var questionList: [Int] = []
     var anserValue = 0
-    var anserJudge:Bool = true
+    var anserJudge: Bool = true
     var timer: Timer?
     var questionNum = ""
     var flashQuestionNum = 0
@@ -40,8 +40,8 @@ class FlashAnzanManager {
             timer?.invalidate()
             delegate?.anserInputViewControllerTransition()
         } else {
-            delegate?.questionDisplay(displayNum: digitNumberGenerator(digit: FlashAnzanManager.flashAnZanShare.digit))
-            if FlashAnzanManager.flashAnZanShare.soundStatus == true {
+            delegate?.questionDisplay(displayNum: digitNumberGenerator(digit: FlashAnzanManager.Shared.digit))
+            if FlashAnzanManager.Shared.soundStatus == true {
                 AudioServicesPlaySystemSound(1052)
             }
             questionNum.removeAll{
@@ -76,5 +76,13 @@ class FlashAnzanManager {
     
     func deliveryNumberOfQuestionValue() {
         flashQuestionNum = numberOfQuestion
+    }
+    
+    func saveResume() {
+        let result = Resume(numberOfQuestion: FlashAnzanManager.Shared.numberOfQuestion,
+                            digit: digit,
+                            interval: interval,
+                            anserJudge: anserJudge)
+        ResumeManager.addResumes(resume: result)
     }
 }

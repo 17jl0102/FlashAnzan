@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-protocol ResumeValueSetDelegate {
-    func resumeValueDelibery(resume:Resume)
+protocol ResumeListTableViewCellDelegate {
+    func resumeToFlashAnzanManager(resume: Resume)
 }
 
 class ResumeListTableViewCell: UITableViewCell {
@@ -21,7 +21,7 @@ class ResumeListTableViewCell: UITableViewCell {
     
     var index = 0
     var resume: Resume!
-    var delegate: ResumeValueSetDelegate?
+    var delegate: ResumeListTableViewCellDelegate?
     
     
     func setup(resume: Resume, indexPath: IndexPath) {
@@ -44,7 +44,7 @@ class ResumeListTableViewCell: UITableViewCell {
     @IBAction func DidTapPlayResumeQuestionButton(_ sender: UIButton) {
         let resumes = ResumeManager.resumes()
         let resume = resumes[index]
-        delegate?.resumeValueDelibery(resume: resume)
+        delegate?.resumeToFlashAnzanManager(resume: resume)
         NotificationCenter.default.post(name: .resumePlay, object: nil)
     }
 }

@@ -24,6 +24,11 @@ struct ResumeManager {
         UserDefaults.standard.set(resumesArchived, forKey: "resume")
         UserDefaults.standard.synchronize()
     }
+    
+    static func resumeUpdate(resumes: [Resume]) {
+        let resumeArchived = try! NSKeyedArchiver.archivedData(withRootObject: resumes, requiringSecureCoding: false)
+        UserDefaults.standard.set(resumeArchived, forKey: "resume")
+    }
 }
 
 
