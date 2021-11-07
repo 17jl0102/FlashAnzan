@@ -8,26 +8,26 @@
 import Foundation
 
 struct ResumeManager {
+    private static let resumeDataKey = "resumeData"
     
     static func resumes() -> [Resume] {
-        let resumeData = UserDefaults.standard.data(forKey: "resume")
-        return (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(resumeData ?? Data()) as? [Resume] ?? []) ?? []
+        let resumeData = UserDefaults.standard.data(forKey: resumeDataKey)
+        let resumeDatas = try? JSONDecoder().decode([Resume].self, from: resumeData ?? Data())
+        return resumeDatas ?? []
     }
     
     static func addResumes(resume: Resume) {
-        let resumeData = UserDefaults.standard.data(forKey: "resume")
-        let unArchivedData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(resumeData ?? Data()) as? [Resume] ?? []
-        var resumes = unArchivedData ?? []
+        let archiveData = UserDefaults.standard.data(forKey: resumeDataKey)
+        let archiveDatas = try? JSONDecoder().decode([Resume].self, from: archiveData ?? Data())
+        var resumes = archiveDatas ?? []
         resumes.append(resume)
-        
-        let resumesArchived = try! NSKeyedArchiver.archivedData(withRootObject: resumes, requiringSecureCoding: false)
-        UserDefaults.standard.set(resumesArchived, forKey: "resume")
-        UserDefaults.standard.synchronize()
+        let resumesArchive = try? JSONEncoder().encode(resumes)
+            UserDefaults.standard.set(resumesArchive, forKey: resumeDataKey)
     }
     
     static func resumeUpdate(resumes: [Resume]) {
-        let resumeArchived = try! NSKeyedArchiver.archivedData(withRootObject: resumes, requiringSecureCoding: false)
-        UserDefaults.standard.set(resumeArchived, forKey: "resume")
+        let resumeArchived = try? JSONEncoder().encode(resumes)
+        UserDefaults.standard.set(resumeArchived, forKey: resumeDataKey)
     }
 }
 

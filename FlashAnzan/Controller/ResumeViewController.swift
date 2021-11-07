@@ -8,9 +8,7 @@
 import UIKit
 
 class ResumeViewController: UIViewController {
-    
     @IBOutlet weak var resumeTableView: UITableView!
-    var resumeManager: ResumeManager!
     var resumes: [Resume] = []
     
     override func viewDidLoad() {
@@ -46,16 +44,17 @@ extension ResumeViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
     }
-
+    
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "削除"
     }
 }
 
 extension ResumeViewController: ResumeListTableViewCellDelegate {
-    func resumeToFlashAnzanManager(resume: Resume) {
-        FlashAnzanManager.Shared.numberOfQuestion = resume.numberOfQuestion
-        FlashAnzanManager.Shared.digit = resume.digit
-        FlashAnzanManager.Shared.interval = resume.interval
+    func didTapResume(resume: Resume) {
+        FlashAnzanManager.shared.numberOfQuestion = resume.numberOfQuestion
+        FlashAnzanManager.shared.digit = resume.digit
+        FlashAnzanManager.shared.interval = resume.interval
+        NotificationCenter.default.post(name: .resumePlay, object: nil)
     }
 }

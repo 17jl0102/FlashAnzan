@@ -8,9 +8,7 @@
 import UIKit
 
 class AnserInputViewController: UIViewController {
-    
     @IBOutlet weak var anserInputView: AnserInputView!
-    
     @IBOutlet weak var anserInputLabel: UILabel!
     
     override func viewDidLoad() {
@@ -20,7 +18,7 @@ class AnserInputViewController: UIViewController {
     }
     
     func buttonControl() {
-        if FlashAnzanManager.Shared.anserValue == 0 {
+        if FlashAnzanManager.shared.anserValue == 0 {
             anserInputView.doubleZeroButton.isEnabled = false
             anserInputView.zeroButton.isEnabled = false
             anserInputView.clearButton.isEnabled = false
@@ -38,13 +36,13 @@ class AnserInputViewController: UIViewController {
     }
     
     @IBAction func didTapAnserDoneButton(_ sender: UIButton) {
-        if FlashAnzanManager.Shared.anserValue == 0 {
+        if FlashAnzanManager.shared.anserValue == 0 {
             alert(alertTitle: "回答が入力されていません", alertMessage: "回答を入力してください")
-        } else if FlashAnzanManager.Shared.anserValue > 10000000 {
-            FlashAnzanManager.Shared.anserValue = 0
+        } else if FlashAnzanManager.shared.anserValue > 10000000 {
+            FlashAnzanManager.shared.anserValue = 0
             anserInputView.inputValue = ""
             anserInputLabel.text = ""
-            alert(alertTitle: "入力エラー", alertMessage: "10,000,000以内で入力してください")
+            alert(alertTitle: "エラー", alertMessage: "10,000,000以内で入力してください")
         } else {
             let resultViewController = storyboard?.instantiateViewController(withIdentifier: "ResultViewController") as! ResultViewController
             present(resultViewController, animated: true, completion: nil)
@@ -54,7 +52,7 @@ class AnserInputViewController: UIViewController {
 
 extension AnserInputViewController: AnserInputValueDelegate {
     func anserInputValue(value: String) {
-        FlashAnzanManager.Shared.anserValue = Int(value) ?? 0
+        FlashAnzanManager.shared.anserValue = Int(value) ?? 0
         anserInputLabel.text = value
         buttonControl()
     }

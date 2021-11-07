@@ -8,16 +8,15 @@
 import UIKit
 
 class QuestionViewController: UIViewController {
-    
     @IBOutlet weak var flashNumberLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        FlashAnzanManager.Shared.delegate = self
+        FlashAnzanManager.shared.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(playAgain), name: Notification.Name.playAgain, object: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            FlashAnzanManager.Shared.deliveryNumberOfQuestionValue()
-            FlashAnzanManager.Shared.executeTimer()
+            FlashAnzanManager.shared.deliveryNumberOfQuestionValue()
+            FlashAnzanManager.shared.executeTimer()
         }
     }
     
@@ -29,14 +28,14 @@ class QuestionViewController: UIViewController {
     @objc func playAgain() {
         dismiss(animated: true, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            FlashAnzanManager.Shared.deliveryNumberOfQuestionValue()
-            FlashAnzanManager.Shared.executeTimer()
+            FlashAnzanManager.shared.deliveryNumberOfQuestionValue()
+            FlashAnzanManager.shared.executeTimer()
         }
     }
 }
 
 extension QuestionViewController: flashQuestionDelegate {
-
+    
     func anserInputViewControllerTransition() {
         let anserInputViewController = storyboard?.instantiateViewController(withIdentifier: "AnserInputViewController") as! AnserInputViewController
         present(anserInputViewController, animated: true, completion: nil)
@@ -47,7 +46,7 @@ extension QuestionViewController: flashQuestionDelegate {
     }
     
     func blancDisplay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + FlashAnzanManager.Shared.interval/2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + FlashAnzanManager.shared.interval/2) {
             self.flashNumberLabel.text = ""
         }
     }

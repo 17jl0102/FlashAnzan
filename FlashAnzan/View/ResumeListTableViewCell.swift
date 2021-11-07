@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ResumeListTableViewCellDelegate {
-    func resumeToFlashAnzanManager(resume: Resume)
+    func didTapResume(resume: Resume)
 }
 
 class ResumeListTableViewCell: UITableViewCell {
@@ -18,11 +18,9 @@ class ResumeListTableViewCell: UITableViewCell {
     @IBOutlet weak var digitLabel: UILabel!
     @IBOutlet weak var intervalLabel: UILabel!
     @IBOutlet weak var anserJudgeLabel: UILabel!
-    
     var index = 0
     var resume: Resume!
     var delegate: ResumeListTableViewCellDelegate?
-    
     
     func setup(resume: Resume, indexPath: IndexPath) {
         self.index = indexPath.row
@@ -44,7 +42,6 @@ class ResumeListTableViewCell: UITableViewCell {
     @IBAction func DidTapPlayResumeQuestionButton(_ sender: UIButton) {
         let resumes = ResumeManager.resumes()
         let resume = resumes[index]
-        delegate?.resumeToFlashAnzanManager(resume: resume)
-        NotificationCenter.default.post(name: .resumePlay, object: nil)
+        delegate?.didTapResume(resume: resume)
     }
 }

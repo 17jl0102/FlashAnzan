@@ -18,7 +18,6 @@ protocol FlashValueSetDelegate {
 
 @IBDesignable
 class FlashSettingView: UIView {
-    
     @IBOutlet weak var numberOfQuestionTextField: UITextField!
     @IBOutlet weak var digitTextField: UITextField!
     @IBOutlet weak var intervalTextField: UITextField!
@@ -37,7 +36,6 @@ class FlashSettingView: UIView {
         
         NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)),
                                                name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)),
                                                name: UITextField.textDidChangeNotification, object: intervalTextField)
     }
@@ -52,7 +50,6 @@ class FlashSettingView: UIView {
         
         NotificationCenter.default.addObserver(self, selector: #selector(numberOfQuestionTextFieldChange(numberOfQuestionNotification:)),
                                                name: UITextField.textDidChangeNotification, object: numberOfQuestionTextField)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(intervalTextFieldChange(intervalNotification:)),
                                                name: UITextField.textDidChangeNotification, object: intervalTextField)
     }
@@ -92,8 +89,8 @@ class FlashSettingView: UIView {
     @objc func didTapDigitDone() {
         let index = digitPicker.selectedRow(inComponent: 0)
         digitTextField.text = String(digits[index])
-        FlashAnzanManager.Shared.digit = digits[index]
-        delegate?.digitValueDelivery(digit: FlashAnzanManager.Shared.digit)
+        FlashAnzanManager.shared.digit = digits[index]
+        delegate?.digitValueDelivery(digit: FlashAnzanManager.shared.digit)
         digitTextField.resignFirstResponder()
     }
     

@@ -30,7 +30,7 @@ class AnserInputView: UIView {
         super.init(coder: aDecoder)
         loadxib()
     }
-
+    
     private func loadxib() {
         let anserInputView = Bundle.main.loadNibNamed("AnserInputView", owner: self, options: nil)?.first as! UIView
         anserInputView.translatesAutoresizingMaskIntoConstraints = false
