@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol ResumeListTableViewCellDelegate {
+protocol ResumeListTableViewCellDelegate: AnyObject {
     func didTapResume(resume: Resume)
 }
 
@@ -20,7 +20,7 @@ class ResumeListTableViewCell: UITableViewCell {
     @IBOutlet weak var anserJudgeLabel: UILabel!
     var index = 0
     var resume: Resume!
-    var delegate: ResumeListTableViewCellDelegate?
+    weak var delegate: ResumeListTableViewCellDelegate?
     
     func setup(resume: Resume, indexPath: IndexPath) {
         self.index = indexPath.row
@@ -39,7 +39,7 @@ class ResumeListTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func DidTapPlayResumeQuestionButton(_ sender: UIButton) {
+    @IBAction func didTapPlayResumeQuestionButton(_ sender: UIButton) {
         let resumes = ResumeManager.resumes()
         let resume = resumes[index]
         delegate?.didTapResume(resume: resume)

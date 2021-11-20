@@ -25,7 +25,8 @@ class QuestionViewController: UIViewController {
         flashNumberLabel.text = ""
     }
     
-    @objc func playAgain() {
+    @objc
+    func playAgain() {
         dismiss(animated: true, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             FlashAnzanManager.shared.deliveryNumberOfQuestionValue()
@@ -34,7 +35,7 @@ class QuestionViewController: UIViewController {
     }
 }
 
-extension QuestionViewController: flashQuestionDelegate {
+extension QuestionViewController: FlashQuestionDelegate {
     
     func anserInputViewControllerTransition() {
         let anserInputViewController = storyboard?.instantiateViewController(withIdentifier: "AnserInputViewController") as! AnserInputViewController
@@ -46,7 +47,7 @@ extension QuestionViewController: flashQuestionDelegate {
     }
     
     func blancDisplay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + FlashAnzanManager.shared.interval/2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + FlashAnzanManager.shared.interval / 2) {
             self.flashNumberLabel.text = ""
         }
     }

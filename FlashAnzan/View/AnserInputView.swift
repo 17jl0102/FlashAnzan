@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AnserInputValueDelegate {
+protocol AnserInputValueDelegate: AnyObject {
     func anserInputValue(value: String)
 }
 
@@ -18,10 +18,10 @@ class AnserInputView: UIView {
     @IBOutlet weak var zeroButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     
-    var delegate: AnserInputValueDelegate?
+    weak var delegate: AnserInputValueDelegate?
     var inputValue = ""
     
-    required override init(frame: CGRect) {
+    override required init(frame: CGRect) {
         super.init(frame: frame)
         loadxib()
     }

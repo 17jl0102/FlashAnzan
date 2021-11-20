@@ -8,7 +8,7 @@
 import Foundation
 import AudioToolbox
 
-protocol flashQuestionDelegate {
+protocol FlashQuestionDelegate: AnyObject {
     func anserInputViewControllerTransition()
     func questionDisplay(displayNum: String)
     func blancDisplay()
@@ -19,14 +19,14 @@ class FlashAnzanManager {
     var numberOfQuestion = 0
     var digit = 0
     var interval = 0.0
-    var soundStatus: Bool = true
+    var soundStatus = true
     var questionList: [Int] = []
     var anserValue = 0
-    var anserJudge: Bool = true
+    var anserJudge = true
     var timer: Timer?
     var questionNum = ""
     var flashQuestionNum = 0
-    var delegate: flashQuestionDelegate?
+    weak var delegate: FlashQuestionDelegate?
     
     private init() {
     }
@@ -35,7 +35,8 @@ class FlashAnzanManager {
         timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(flashQuestionDisplay), userInfo: nil, repeats: true)
     }
     
-    @objc func flashQuestionDisplay() {
+    @objc
+    func flashQuestionDisplay() {
         if flashQuestionNum == 0 {
             timer?.invalidate()
             delegate?.anserInputViewControllerTransition()
@@ -44,7 +45,7 @@ class FlashAnzanManager {
             if FlashAnzanManager.shared.soundStatus == true {
                 AudioServicesPlaySystemSound(1052)
             }
-            questionNum.removeAll{
+            questionNum.removeAll {
                 $0 == ","
             }
             questionList.append(Int(questionNum) ?? 0)

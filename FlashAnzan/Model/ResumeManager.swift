@@ -22,7 +22,7 @@ struct ResumeManager {
         var resumes = archiveDatas ?? []
         resumes.append(resume)
         let resumesArchive = try? JSONEncoder().encode(resumes)
-            UserDefaults.standard.set(resumesArchive, forKey: resumeDataKey)
+        UserDefaults.standard.set(resumesArchive, forKey: resumeDataKey)
     }
     
     static func resumeUpdate(resumes: [Resume]) {
@@ -30,5 +30,3 @@ struct ResumeManager {
         UserDefaults.standard.set(resumeArchived, forKey: resumeDataKey)
     }
 }
-
-

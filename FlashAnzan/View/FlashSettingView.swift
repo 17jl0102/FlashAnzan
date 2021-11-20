@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FlashValueSetDelegate {
+protocol FlashValueSetDelegate: AnyObject {
     func numberOfQuestionValueDelivery(numberOfQuestion: Int)
     func digitValueDelivery(digit: Int)
     func intervalValueDelivery(interval: Double)
@@ -24,9 +24,9 @@ class FlashSettingView: UIView {
     
     var digits: [Int] = ([Int])(1...5)
     let digitPicker = UIPickerView()
-    var delegate: FlashValueSetDelegate?
+    weak var delegate: FlashValueSetDelegate?
     
-    required override init(frame: CGRect) {
+    override required init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
         createDigitPicker(digits: digits)
@@ -81,12 +81,14 @@ class FlashSettingView: UIView {
         digitTextField.inputView = digitPicker
     }
     
-    @objc func didTapNumberOfQuestionDone() {
+    @objc
+    func didTapNumberOfQuestionDone() {
         delegate?.numberOfQuestionCheckAlert()
         numberOfQuestionTextField.resignFirstResponder()
     }
     
-    @objc func didTapDigitDone() {
+    @objc
+    func didTapDigitDone() {
         let index = digitPicker.selectedRow(inComponent: 0)
         digitTextField.text = String(digits[index])
         FlashAnzanManager.shared.digit = digits[index]
@@ -94,19 +96,22 @@ class FlashSettingView: UIView {
         digitTextField.resignFirstResponder()
     }
     
-    @objc func didTapIntervalDone() {
+    @objc
+    func didTapIntervalDone() {
         delegate?.intervalCheckAlert()
         intervalTextField.resignFirstResponder()
     }
     
-    @objc func numberOfQuestionTextFieldChange(numberOfQuestionNotification: Notification) {
+    @objc
+    func numberOfQuestionTextFieldChange(numberOfQuestionNotification: Notification) {
         let numberOfQuestionTextField = numberOfQuestionNotification.object as! UITextField
         if let numberOfQuestion = numberOfQuestionTextField.text {
             delegate?.numberOfQuestionValueDelivery(numberOfQuestion: Int(numberOfQuestion) ?? 0)
         }
     }
     
-    @objc func intervalTextFieldChange(intervalNotification: Notification) {
+    @objc
+    func intervalTextFieldChange(intervalNotification: Notification) {
         let intervalTextField = intervalNotification.object as! UITextField
         if let interval = intervalTextField.text {
             delegate?.intervalValueDelivery(interval: Double(interval) ?? 0)

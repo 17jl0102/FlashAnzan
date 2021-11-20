@@ -23,11 +23,13 @@ class FlashSettingViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(resumePlay), name: .resumePlay, object: nil)
     }
     
-    @objc func backFlashSettingViewController() {
+    @objc
+    func backFlashSettingViewController() {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc func resumePlay() {
+    @objc
+    func resumePlay() {
         dismiss(animated: true, completion: nil)
         let questionViewController = storyboard?.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
         present(questionViewController, animated: true, completion: nil)
@@ -50,7 +52,7 @@ class FlashSettingViewController: UIViewController {
     }
     
     @IBAction func didTapSoundControl(_ sender: UIButton) {
-        if FlashAnzanManager.shared.soundStatus == true {
+        if FlashAnzanManager.shared.soundStatus {
             FlashAnzanManager.shared.soundStatus.toggle()
             soundControlButoon.setTitle("音 無", for: .normal)
         } else {
@@ -77,7 +79,7 @@ extension FlashSettingViewController: FlashValueSetDelegate {
     func numberOfQuestionCheckAlert() {
         if FlashAnzanManager.shared.numberOfQuestion == 0 {
             alert(alertTitle: "エラー", alertMessage: "問題数を設定してください")
-        } else if FlashAnzanManager.shared.numberOfQuestion <= 1 || FlashAnzanManager.shared.numberOfQuestion > 100  {
+        } else if FlashAnzanManager.shared.numberOfQuestion <= 1 || FlashAnzanManager.shared.numberOfQuestion > 100 {
             alert(alertTitle: "エラー", alertMessage: "2~100問内で設定してください")
         }
     }

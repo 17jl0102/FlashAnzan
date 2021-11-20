@@ -12,7 +12,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var quesitonResultLabel: UILabel!
     @IBOutlet weak var anserLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-    var quesitonResultInt = FlashAnzanManager.shared.questionList.reduce(0){$0 + $1}
+    var quesitonResultInt = FlashAnzanManager.shared.questionList.reduce(0) { $0 + $1 }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +34,12 @@ class ResultViewController: UIViewController {
         FlashAnzanManager.shared.saveResume()
     }
     
-    @IBAction func DidTapPlayAgainButton(_ sender: UIButton) {
+    @IBAction func didTapPlayAgainButton(_ sender: UIButton) {
         FlashAnzanManager.shared.questionList = []
         NotificationCenter.default.post(name: Notification.Name.playAgain, object: nil)
     }
     
-    @IBAction func DidTapBackFlashSettingViewControllerButton(_ sender: UIButton) {
+    @IBAction func didTapBackFlashSettingViewControllerButton(_ sender: UIButton) {
         FlashAnzanManager.shared.questionList = []
         NotificationCenter.default.post(name: Notification.Name.backFlashSettingViewController, object: nil)
     }
